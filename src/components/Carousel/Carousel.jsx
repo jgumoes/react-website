@@ -41,7 +41,16 @@ const Carousel = () => {
   let shownData = carouselData[showDataIndex]
 
   const buttonClickHandler = position => {
-    console.log("button clicked", position)
+    const maxLength = carouselData.length - 1
+    const buttonsDirection = {
+      "left": -1,
+      "right": 1,
+    }
+    let newIndex = showDataIndex + buttonsDirection[position]
+    newIndex = newIndex <= maxLength ? newIndex : 0
+    newIndex = newIndex >= 0 ? newIndex : maxLength
+    setShowDataIndex(newIndex)
+    console.log("newIndex", newIndex)
   }
 
   return(
