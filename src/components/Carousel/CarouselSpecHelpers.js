@@ -1,4 +1,4 @@
-const getCarouselDataMock = () => {
+const getCarouselDataMock = (setCarouselData) => {
   let response = 
   {
     "Details": [
@@ -21,6 +21,8 @@ const getCarouselDataMock = () => {
     "Status": "1",
     "Errors": []
   }
+
+  setCarouselData(response)
 
   return response
 }

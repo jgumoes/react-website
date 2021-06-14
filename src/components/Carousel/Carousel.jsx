@@ -1,16 +1,13 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Swiper from 'react-id-swiper';
-import getCarouselData from "../../req/FetchRequests";
 import './Carousel.css'
 
-const SwiperElement = (props) => {
-  const { data } = props
-  const { Title, Subtitle, ImageUrl } = data
-  console.log(Title)
+const SwiperElement = (data) => {
+  console.log("SwiperElement", data)
   return(
-    <div className="swiper-element" style={{ backgroundImage: `url(${ImageUrl})`, position: 'center'}}>
-        <h1 className="h">{ Title }</h1>
-        <h3 className="h">{Subtitle}</h3>
+    <div className="swiper-element" style={{ backgroundImage: `url(${data["ImageUrl"]})`, position: 'center'}}>
+        <h1 className="h">{ data["Title"] }</h1>
+        <h3 className="h">{data["Subtitle"]}</h3>
         <div className="button">
           <b>Contact Us</b>
         </div>
@@ -19,21 +16,33 @@ const SwiperElement = (props) => {
 }
 
 const Carousel = (props) => {
-  const {fetchData} = props
-  console.log(typeof(fetchData))
-  const carouselData = fetchData()
-  const carouselParts = carouselData["Details"]
-  console.log(carouselParts[0])
+  const [carouselData, setCarouselData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const { testing } = props
+  console.log("testing", testing)
+
+  useEffect(() => {
+    const fetchCarouselData = async () => {
+      await fetch("https://interview-assessment.api.avamae.co.uk/api/v1/home/banner-details")
+        .then((res) => res.json())
+        .then((data) => {console.log("data", data) ;setCarouselData(data["Details"])})
+        .catch((e) => console.log(e))
+      // console.log(data)
+      
+      setIsLoading(false);
+    };
+    fetchCarouselData()
+  }, [])
 
   return(
     <div className="carousel-container">
-      <SwiperElement data={carouselParts[0]} />
+      {carouselData.map(SwiperElement)}
     </div>
   )
 }
 
 Carousel.defaultProps = {
-  fetchData: getCarouselData
+  testing: false
 }
 
 export default Carousel
