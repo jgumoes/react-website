@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: left;
   justify-content: center;
-  padding-inline: var(--page-margin);
+  /* margin-inline: var(--page-margin); */
   color: white;
 }
 
@@ -22,5 +22,6 @@
 }
 
 .carousel-container{
-  overflow: hidden;
+  display: flex;
+  /* overflow: hidden; */
 }

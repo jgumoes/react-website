@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import CarouselButton from '../CarouselButton/CarouselButton';
 import Swiper from 'react-id-swiper';
 import './Carousel.css'
+// import '../CarouselButton/CarouselButton.css'
 
-const SwiperElement = (data) => {
+const SwiperElement = ({data}) => {
+  // const { data } = props
   console.log("SwiperElement", data)
   return(
     <div className="swiper-element" style={{ backgroundImage: `url(${data["ImageUrl"]})`, position: 'center'}}>
@@ -15,11 +18,9 @@ const SwiperElement = (data) => {
   )
 }
 
-const Carousel = (props) => {
+const Carousel = () => {
   const [carouselData, setCarouselData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const { testing } = props
-  console.log("testing", testing)
+  const [showDataIndex, setShowDataIndex] = useState(0);
 
   useEffect(() => {
     const fetchCarouselData = async () => {
@@ -27,22 +28,30 @@ const Carousel = (props) => {
         .then((res) => res.json())
         .then((data) => {console.log("data", data) ;setCarouselData(data["Details"])})
         .catch((e) => console.log(e))
-      // console.log(data)
-      
-      setIsLoading(false);
     };
     fetchCarouselData()
   }, [])
 
+  if (carouselData.length === 0){
+    return(
+      <div />
+    )
+  }
+
+  let shownData = carouselData[showDataIndex]
+
+  const buttonClickHandler = position => {
+    console.log("button clicked", position)
+  }
+
   return(
     <div className="carousel-container">
-      {carouselData.map(SwiperElement)}
+      <CarouselButton position="left" handleClick={buttonClickHandler}/>
+      {/* {carouselData.map(SwiperElement)} */}
+      {<SwiperElement data={shownData} />}
+      <CarouselButton position="right" handleClick={buttonClickHandler}/>
     </div>
   )
-}
-
-Carousel.defaultProps = {
-  testing: false
 }
 
 export default Carousel

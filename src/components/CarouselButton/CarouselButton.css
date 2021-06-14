@@ -1,0 +1,20 @@
+.carousel-button{
+  display: flex;
+  width: var(--page-margin);
+  align-items: center;
+  background-color: transparent;
+}
+
+.carousel-button .inner-button{
+  background-color: rgb(155, 155, 155);
+  size: 30px 30px;
+  padding: 10px
+}
+
+.carousel-button#left{
+  justify-content: flex-start;
+}
+
+.carousel-button#right{
+  justify-content: flex-end;
+}
