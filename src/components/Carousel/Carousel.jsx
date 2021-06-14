@@ -8,11 +8,13 @@ const SwiperElement = ({data}) => {
   // const { data } = props
   console.log("SwiperElement", data)
   return(
-    <div className="swiper-element" style={{ backgroundImage: `url(${data["ImageUrl"]})`, position: 'center'}}>
-        <h1 className="h">{ data["Title"] }</h1>
-        <h3 className="h">{data["Subtitle"]}</h3>
-        <div className="button">
-          <b>Contact Us</b>
+    <div className="swiper-element">
+        <div className="content">
+          <h1 className="h">{ data["Title"] }</h1>
+          <h3 className="h">{data["Subtitle"]}</h3>
+          <div className="button">
+            <b>Contact Us</b>
+          </div>
         </div>
     </div>
   )
@@ -54,7 +56,7 @@ const Carousel = () => {
   }
 
   return(
-    <div className="carousel-container">
+    <div className="carousel-container" style={{ backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.83) 20%, transparent 65%), url(${shownData["ImageUrl"]})`, position: 'center'}}>
       <CarouselButton position="left" handleClick={buttonClickHandler}/>
       {/* {carouselData.map(SwiperElement)} */}
       {<SwiperElement data={shownData} />}
