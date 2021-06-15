@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import CarouselButton from '../CarouselButton/CarouselButton';
-import Swiper from 'react-id-swiper';
+import BlueButton from '../BlueButton/BlueButton'
 import './Carousel.css'
 // import '../CarouselButton/CarouselButton.css'
 
@@ -12,9 +12,7 @@ const SwiperElement = ({data}) => {
         <div className="content">
           <h1 className="h">{ data["Title"] }</h1>
           <h3 className="h">{data["Subtitle"]}</h3>
-          <div className="button">
-            <b>Contact Us</b>
-          </div>
+          <BlueButton text="Contact Us" />
         </div>
     </div>
   )

@@ -9,17 +9,8 @@
   color: whitesmoke;
 }
 
-.swiper-element .button {
-  background-color: var(--button-dark-blue);
-  border-radius: var(--button-border-radius);
-  width: fit-content;
-  font-size: 11px;
-  /* height: 20px; */
-  padding: 12px 30px;
-}
-
 .carousel-container{
-  height: 419px;
+  height: var(--card-height);
   background-size: 1600px;
   background-clip: border-box;
   background-position-x: center;
