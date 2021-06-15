@@ -56,7 +56,7 @@ const Carousel = () => {
   }
 
   return(
-    <div className="carousel-container" style={{ backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.83) 20%, transparent 65%), url(${shownData["ImageUrl"]})`, position: 'center'}}>
+    <div className="carousel-container" style={{ backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.81) 16%, rgba(0, 0, 0, 0.2) 39%, transparent 50%), url(${shownData["ImageUrl"]})`, position: 'center'}}>
       <CarouselButton position="left" handleClick={buttonClickHandler}/>
       {/* {carouselData.map(SwiperElement)} */}
       {<SwiperElement data={shownData} />}
