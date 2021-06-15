@@ -1,5 +1,6 @@
 import Main from './Views/Main/Main';
 import './App.css'
+import NavBar from './components/NavBar/NavBar';
 
 import {
   BrowserRouter as Router,
@@ -11,23 +12,7 @@ import {
 function App() {
   return (
     <Router>
-      <nav className="navbar">
-        <Link to="/" class="nav-button">
-          <button>
-            HOME
-          </button>
-        </Link>
-        <Link to="/about" class="nav-button">
-          <button>
-            ABOUT US
-          </button>
-        </Link>
-        <Link to="/contact" class="nav-button">
-          <button>
-            CONTACT US
-          </button>
-        </Link>
-      </nav>
+      <NavBar />
 
       <Switch>
         <Route path="/about">
