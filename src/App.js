@@ -15,6 +15,9 @@ function App() {
       <NavBar />
 
       <Switch>
+        <Route path="/contact">
+          <div>Contact us with this here form</div>
+        </Route>
         <Route path="/about">
           <div>About Us</div>
         </Route>

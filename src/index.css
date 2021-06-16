@@ -24,3 +24,7 @@ code {
 .h {
   font-weight: initial;
 }
+
+button {
+  cursor: pointer;
+}

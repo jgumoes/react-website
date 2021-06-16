@@ -2,17 +2,15 @@ import React, { useEffect, useState } from 'react'
 import CarouselButton from '../CarouselButton/CarouselButton';
 import BlueButton from '../BlueButton/BlueButton'
 import './Carousel.css'
-// import '../CarouselButton/CarouselButton.css'
 
 const SwiperElement = ({data}) => {
-  // const { data } = props
   console.log("SwiperElement", data)
   return(
     <div className="swiper-element">
         <div className="content">
           <h1 className="h">{ data["Title"] }</h1>
           <h3 className="h">{data["Subtitle"]}</h3>
-          <BlueButton text="Contact Us" />
+          <BlueButton text="Contact Us" route="/contact"/>
         </div>
     </div>
   )

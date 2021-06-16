@@ -2,7 +2,6 @@ import Carousel from "../../components/Carousel/Carousel"
 import BlueButton from "../../components/BlueButton/BlueButton"
 import './Main.css'
 import firstCardPicture from "../../Resources/shutterstock_696636415.jpg"
-import secondCardPicture from "../../Resources/shutterstock_407632243.jpg"
 import LightButton from "../../components/LightButton/LightButton"
 
 const Main = () => {
@@ -27,7 +26,7 @@ const FirstCard = ({ props }) => {
         <ul>
           {listItems.map(li => <li>{li}</li>)}
         </ul>
-        <BlueButton text="Learn more"/>
+        <BlueButton text="Learn more" route="/about"/>
       </div>
       <div className="card-element" id="picture">
       <img src={firstCardPicture} alt="tres Ipsum" />
@@ -59,7 +58,7 @@ const ThirdCard = ({ props }) => {
         <p><b>{leadParagraph}</b></p>
         {body.map(b => <p>{b}</p>)}
       </div>
-      <BlueButton text="Contact us" />
+      <BlueButton text="Contact us" route="/contact"/>
     </div>
   )
 }
