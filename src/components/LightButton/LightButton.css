@@ -1,0 +1,10 @@
+.light-button {
+  margin-left: var(--navbar-button-margin);
+  border:none;
+  background-color: #eef7ff;
+  height: 37px;
+  width: 95px;
+  color: #3c83bc;
+  font-size: var(--navbar-font-size);
+  text-shadow: 0 0 1.5px #3c83bc;
+}

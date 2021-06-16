@@ -8,6 +8,7 @@
   /* padding: 50px 0; */
   display: flex;
   justify-content: space-between;
+  align-items: center;
   column-gap: 60px;
 }
 
@@ -29,7 +30,7 @@
 
 .static-card .card-element{
   flex: 1 1;
-  max-width: 486px;
+  max-width: 45%;
   box-sizing: border-box;
   object-fit: contain;
   border-radius: var(--button-border-radius);

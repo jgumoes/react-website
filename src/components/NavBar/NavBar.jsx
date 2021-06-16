@@ -6,6 +6,7 @@ import {
 } from "react-router-dom"
 import './NavBar.css'
 import CompanyLogo from '../../Resources/Logo.svg'
+import LightButton from "../LightButton/LightButton"
 
 const  NavBar = () => {
   return (
@@ -27,7 +28,7 @@ const  NavBar = () => {
             CONTACT US
           </button>
         </Link>
-        <button id="login-button">Log in</button>
+        <LightButton text="Log in"/>
       </div>
     </nav>
   )
