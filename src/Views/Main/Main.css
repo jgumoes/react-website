@@ -4,8 +4,8 @@
 
 .static-card {
   box-sizing: border-box;
-  padding: 48px var(--page-margin);
-  /* padding: 48px 0; */
+  padding: 50px var(--page-margin);
+  /* padding: 50px 0; */
   display: flex;
   justify-content: space-between;
   column-gap: 60px;
@@ -37,7 +37,7 @@
 
 .static-card ul {
   padding-left: 1.2em;
-  margin: 0;
+  margin: 26px 0;
 }
 
 .static-card li {
@@ -46,7 +46,20 @@
   font-weight: 500;
 }
 
+/* first card */
+.static-card#first img {
+  width: 104%;
+  position: relative;
+  bottom: 19px;
+}
+
+.static-card#first .card-element#picture {
+  max-height: 300px;
+  overflow: hidden;
+}
+/* second card*/
 .static-card#second {
+  height: 406px;
   background-image: url("../../Resources/shutterstock_407632243.jpg");
 }
 
@@ -59,6 +72,7 @@
   color: var(--white-text-color);
 }
 
+/* third card */
 .static-card#third {
   flex-direction: column;
   align-items: center;
@@ -66,8 +80,20 @@
 
 .static-card#third .paragraph-container {
   column-count: 3;
+  margin: 20px 0;
+  margin-bottom: 27px;
+  padding-inline: 24px;
+  column-gap: 40px;
 }
 
 .static-card#third .paragraph-container p {
   margin-top: 0%;
+}
+
+.static-card#third h3 {
+  font-size: 15px;
+  margin: 7px 0;
+  font-weight: 400;
+  color: var(--dark-text-color);
+  text-shadow: 0 0 1.5px var(--dark-text-color);
 }

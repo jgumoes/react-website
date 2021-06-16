@@ -19,7 +19,7 @@ const Main = () => {
 const FirstCard = ({ props }) => {
   const { header, body, listItems } = props
   return (
-    <div className="static-card" id="1">
+    <div className="static-card" id="first">
       <div className="card-element">
         <h2>{header}</h2>
         <p>{body}</p>
@@ -28,7 +28,9 @@ const FirstCard = ({ props }) => {
         </ul>
         <BlueButton text="Learn more"/>
       </div>
-      <img src={firstCardPicture} className="card-element" alt="tres Ipsum" />
+      <div className="card-element" id="picture">
+      <img src={firstCardPicture} alt="tres Ipsum" />
+      </div>
     </div>
   )
 }
