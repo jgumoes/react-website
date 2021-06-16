@@ -1,5 +1,4 @@
 :root{
-  --nav-text-color: #606060;
   --navbar-button-margin: 17px;
   --navbar-font-size: 11px;
 }
@@ -30,8 +29,8 @@
   border: none;
   font-size: var(--navbar-font-size);
   font-weight: 200;
-  color: var(--nav-text-color);
-  text-shadow: 0 0 1.5px var(--nav-text-color);
+  color: var(--dark-text-color);
+  text-shadow: 0 0 1.5px var(--dark-text-color);
   letter-spacing: 1.3px;
 }
 

@@ -1,0 +1,25 @@
+{
+  "firstCard":{
+    "header": "Justo petentium te vix, scripta regione urbanitas",
+    "body": "Ut luctus tellus vel felis viverra laoreet. Sed commodo tellus eget porttitor pretium. Proin at risus in sapien facilisis vehicula. Nunc ac velit in nibh dignissim vehicula. Maecenas euismod arcu et enim luctus pharetra. Donec sit amet leo vitae nisl venenatis molestie eget imperdiet nisl. Proin ultrices libero a turpis tempus.",
+    "listItems": [
+      "Curabitur a dui luctus, facilisis erat sit amet, maximus purus.",
+      "Donec a est eget arcu egestas tincidunt at sit amet elit.",
+      "Phasellus tempus nunc vel risus ultricies gravida.",
+      "Morbi accumsan nisl in convallis tempus."
+    ]
+  },
+  "secondCard":{
+    "header": "Nulla sem urna, dictum sed nisi in, viverra rutrum neque",
+    "body": "Pellentesque pretium mi ut ante posuere, finibus venenatis sapien imperdiet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam cursus pellentesque semper. Nam turpis ante, semper non congue maximus, sollicitudin non nisi. Etiam vitae lorem tincidunt massa auctor tincidunt. Sed eu est lobortis, tristique nulla non, elementum leo. Nam sed dolor nec justo maximus porta. Pellentesque congue viverra neque a molestie. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Aenean erat mauris, tristique commodo aliquam eget, tincidunt id lacus. Integer eleifend pharetra commodo. Aenean tincidunt vel tortor ut dictum."
+  },
+  "thirdCard":{
+    "header": "Sed libero justo, lobortis sit amet suscipt non",
+    "subHeader": "taria duo ut vis semper abhorreant",
+    "leadParagraph": "Donec sit amet erat nisl. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi dictum, nibh non interdum auctor, augue massa tempor ligula, quis bibendum sapien eros sit amet purus. Nullam feugiat maximus magna vel vestibulum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum ultrices ex et sem condimentum, at varius sapien laoreet. Vivamus blandit mollis purus eget molestie. Quisque et eros at odio dictum suscipit rhoncus eu mauris. Nulla eros massa, rhoncus a purus vel, commodo egestas nisl. Proin placerat sapien gravida, fringilla ligula a, fringilla massa. Ut hendrerit tincidunt feugiat. Vestibulum vitae congue erat, et vestibulum dolor. Duis sit amet turpis turpis. Nam scelerisque, diam a luctus placerat, elit sem pharetra nunc, a tristique nisi leo non dui.",
+    "body": [
+      "Nullam scelerisque id mauris eget cursus. Vivamus vulputate commodo facilisis. Curabitur porta dolor ac ipsum interdum, vel scelerisque risus tempor. Sed quis aliquam tellus, id tincidunt nunc. Nulla gravida fringilla magna, sit amet efficitur felis varius a. Donec eget auctor nulla. Sed molestie fringilla libero malesuada varius. Donec feugiat felis eros, vel pulvinar tellus pulvinar eget. Aliquam ut quam vel massa mattis dictum ac eget orci. Nullam venenatis porttitor justo eget mattis.",
+      "Nulla vel varius lorem. Donec ac arcu ac massa eleifend finibus eu sed enim. Aliquam congue scelerisque leo vitae elementum. Duis risus sapien, gravida pharetra sem in, sollicitudin elementum ex. Suspendisse id mollis odio. Fusce a mattis sem. Duis vitae dictum diam. Vivamus mauris neque, hendrerit sit amet pretium nec, mattis interdum sem. Praesent et dui in libero commodo egestas eu in lorem. Sed luctus dui ex, ac posuere massa pretium ut. Vestibulum malesuada sapien sit amet eleifend volutpat. Sed at tincidunt velit, quis ullamcorper magna. Vestibulum mauris mauris, mattis et elementum id, tincidunt sed justo. Quisque sit amet eros consequat, mattis ex non, varius felis."
+    ]
+  }
+}

@@ -10,7 +10,7 @@
 }
 
 .carousel-container{
-  height: var(--card-height);
+  height: 420px;
   background-size: 1600px;
   background-clip: border-box;
   background-position-x: center;
