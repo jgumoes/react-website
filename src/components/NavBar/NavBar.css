@@ -34,6 +34,10 @@
   letter-spacing: 1.3px;
 }
 
+.light-button#nav-bar {
+  margin-left: var(--navbar-button-margin);
+}
+
 .navbar .buttons-container {
   height: 100%;
 }

@@ -28,7 +28,7 @@ const  NavBar = () => {
             CONTACT US
           </button>
         </Link>
-        <LightButton text="Log in"/>
+        <LightButton text="Log in" ID="nav-bar"/>
       </div>
     </nav>
   )

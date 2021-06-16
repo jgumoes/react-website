@@ -61,7 +61,10 @@
 /* second card*/
 .static-card#second {
   height: 406px;
-  background-image: url("../../Resources/shutterstock_407632243.jpg");
+  background-image: url("../../Resources/shutterstock_1302552622.jpg");
+  background-position-x: center;
+  background-position-y: -49px;
+  background-size: 1530px;
 }
 
 .static-card#second .card-element {
@@ -71,6 +74,10 @@
 
 #second .card-element h2,#second .card-element p {
   color: var(--white-text-color);
+}
+
+.static-card#second .light-button {
+  width: 115px;
 }
 
 /* third card */
@@ -83,7 +90,6 @@
   column-count: 3;
   margin: 20px 0;
   margin-bottom: 27px;
-  padding-inline: 24px;
   column-gap: 40px;
 }
 

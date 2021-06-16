@@ -52,9 +52,10 @@ const Carousel = () => {
     setShowDataIndex(newIndex)
     console.log("newIndex", newIndex)
   }
-
+  const backgroundUrl = shownData["ImageUrl"]
+  const containerID = /(?:\w+\/)(?<id>\w+)\.jpg/g.exec(backgroundUrl).groups.id
   return(
-    <div className="carousel-container" style={{ backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.81) 16%, rgba(0, 0, 0, 0.2) 39%, transparent 50%), url(${shownData["ImageUrl"]})`, position: 'center'}}>
+    <div className="carousel-container" id={`${containerID}`} style={{ backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.81) 16%, rgba(0, 0, 0, 0.2) 39%, transparent 50%), url(${backgroundUrl})`, position: 'center'}}>
       <CarouselButton position="left" handleClick={buttonClickHandler}/>
       {/* {carouselData.map(SwiperElement)} */}
       {<SwiperElement data={shownData} />}

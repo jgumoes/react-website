@@ -3,6 +3,7 @@ import BlueButton from "../../components/BlueButton/BlueButton"
 import './Main.css'
 import firstCardPicture from "../../Resources/shutterstock_696636415.jpg"
 import secondCardPicture from "../../Resources/shutterstock_407632243.jpg"
+import LightButton from "../../components/LightButton/LightButton"
 
 const Main = () => {
   const staticData = require("../../Resources/MainPageContent.json")
@@ -42,6 +43,7 @@ const SecondCard = ({ props }) => {
       <div className="card-element">
         <h2>{header}</h2>
         <p>{body}</p>
+        <LightButton text="Log in" />
       </div>
     </div>
   )
