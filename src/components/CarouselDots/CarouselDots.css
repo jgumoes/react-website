@@ -1,0 +1,32 @@
+:root{
+  --carousel-dot-diameter: 6px;
+  --carousel-shown-dot-diameter: 9px;
+}
+
+.dot-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 19px;
+}
+
+.carousel-dot{
+  background-color: white;
+  border: none;
+  margin-inline: 4px;
+  padding: 0;
+  border-radius: 50%;
+  min-height: var(--carousel-dot-diameter);
+  min-width: var(--carousel-dot-diameter);
+  max-height: var(--carousel-dot-diameter);
+  max-width: var(--carousel-dot-diameter);
+}
+
+.carousel-dot#shown {
+  background-color: #2f7bb8;
+  min-height: var( --carousel-shown-dot-diameter);
+  min-width: var( --carousel-shown-dot-diameter);
+  max-height: var( --carousel-shown-dot-diameter);
+  max-width: var( --carousel-shown-dot-diameter);
+}

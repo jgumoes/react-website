@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CarouselButton from '../CarouselButton/CarouselButton';
 import BlueButton from '../BlueButton/BlueButton'
 import './Carousel.css'
+import CarouselDots from '../CarouselDots/CarouselDots';
 
 const SwiperElement = ({data}) => {
   console.log("SwiperElement", data)
@@ -37,9 +38,9 @@ const Carousel = () => {
   }
 
   let shownData = carouselData[showDataIndex]
+  const maxLength = carouselData.length - 1
 
   const buttonClickHandler = position => {
-    const maxLength = carouselData.length - 1
     const buttonsDirection = {
       "left": -1,
       "right": 1,
@@ -48,17 +49,23 @@ const Carousel = () => {
     newIndex = newIndex <= maxLength ? newIndex : 0
     newIndex = newIndex >= 0 ? newIndex : maxLength
     setShowDataIndex(newIndex)
-    console.log("newIndex", newIndex)
   }
+
+  const dotClickHandler = index => {
+    setShowDataIndex(index)
+  }
+
   const backgroundUrl = shownData["ImageUrl"]
   const containerID = /(?:\w+\/)(?<id>\w+)\.jpg/g.exec(backgroundUrl).groups.id
   return(
-    <div className="carousel-container" id={`${containerID}`} style={{ backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.81) 16%, rgba(0, 0, 0, 0.2) 39%, transparent 50%), url(${backgroundUrl})`, position: 'center'}}>
-      <CarouselButton position="left" handleClick={buttonClickHandler}/>
-      {/* {carouselData.map(SwiperElement)} */}
-      {<SwiperElement data={shownData} />}
-      <CarouselButton position="right" handleClick={buttonClickHandler}/>
-    </div>
+    <>
+      <div className="carousel-container" id={`${containerID}`} style={{ backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.81) 16%, rgba(0, 0, 0, 0.2) 39%, transparent 50%), url(${backgroundUrl})`, position: 'center'}}>
+        <CarouselButton position="left" handleClick={buttonClickHandler}/>
+        {<SwiperElement data={shownData} />}
+        <CarouselButton position="right" handleClick={buttonClickHandler}/>
+      </div>
+      <CarouselDots number={maxLength} shown={showDataIndex} dotClickHandler={dotClickHandler}/>
+    </>
   )
 }
 

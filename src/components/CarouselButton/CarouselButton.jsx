@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react'
 import React from 'react'
 import './CarouselButton.css'
 import { ReactComponent as Arrow } from './Icon_Arrow.svg'
@@ -14,7 +13,7 @@ import ArrowIcon from './Icon_Arrow.svg'
      this.props.handleClick(this.props.position)
    }
 
-  render() { console.log(this.props)
+  render() {
     const position = this.props.position
     return(
     <div className="carousel-button" id={position}>
