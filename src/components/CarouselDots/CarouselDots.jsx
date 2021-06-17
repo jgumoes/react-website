@@ -2,10 +2,6 @@ import React from 'react'
 import './CarouselDots.css'
 
 class CarouselDots extends React.Component {
-    constructor(props){
-      super(props)
-      this.state = props
-    }
   
   dotClickHandler = (index) => {
     this.props.dotClickHandler(index)

@@ -4,13 +4,9 @@ import { ReactComponent as Arrow } from './Icon_Arrow.svg'
 import ArrowIcon from './Icon_Arrow.svg'
 
  class CarouselButton extends React.Component {
-   constructor(props){
-     super(props)
-     this.state = props
-   }
   
-   handleClick = (position) => {
-     this.props.handleClick(this.props.position)
+   handleClick = (index) => {
+     this.props.handleClick(this.props.index)
    }
 
   render() {

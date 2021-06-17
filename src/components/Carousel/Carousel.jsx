@@ -5,7 +5,6 @@ import './Carousel.css'
 import CarouselDots from '../CarouselDots/CarouselDots';
 
 const SwiperElement = ({data}) => {
-  console.log("SwiperElement", data)
   return(
     <div className="swiper-element">
         <div className="content">
@@ -25,7 +24,7 @@ const Carousel = () => {
     const fetchCarouselData = async () => {
       await fetch("https://interview-assessment.api.avamae.co.uk/api/v1/home/banner-details")
         .then((res) => res.json())
-        .then((data) => {console.log("data", data) ;setCarouselData(data["Details"])})
+        .then((data) => {setCarouselData(data["Details"])})
         .catch((e) => console.log(e))
     };
     fetchCarouselData()
@@ -40,31 +39,23 @@ const Carousel = () => {
   let shownData = carouselData[showDataIndex]
   const maxLength = carouselData.length - 1
 
-  const buttonClickHandler = position => {
-    const buttonsDirection = {
-      "left": -1,
-      "right": 1,
-    }
-    let newIndex = showDataIndex + buttonsDirection[position]
-    newIndex = newIndex <= maxLength ? newIndex : 0
-    newIndex = newIndex >= 0 ? newIndex : maxLength
-    setShowDataIndex(newIndex)
-  }
-
-  const dotClickHandler = index => {
+  const setIndex = index => {
     setShowDataIndex(index)
   }
 
   const backgroundUrl = shownData["ImageUrl"]
-  const containerID = /(?:\w+\/)(?<id>\w+)\.jpg/g.exec(backgroundUrl).groups.id
+  const containerID = /(?:\w+\/)(?<id>\w+)\.jpg/g.exec(backgroundUrl).groups.id // just the name of the jpg file
+
+  const nextIndex = showDataIndex + 1 <= maxLength ? showDataIndex + 1 : 0
+  const prevIndex = showDataIndex - 1 >= 0 ? showDataIndex - 1 : maxLength
   return(
     <>
       <div className="carousel-container" id={`${containerID}`} style={{ backgroundImage: `linear-gradient(90deg, rgba(0, 0, 0, 0.81) 16%, rgba(0, 0, 0, 0.2) 39%, transparent 50%), url(${backgroundUrl})`, position: 'center'}}>
-        <CarouselButton position="left" handleClick={buttonClickHandler}/>
+        <CarouselButton position="left" index={prevIndex} handleClick={setIndex}/>
         {<SwiperElement data={shownData} />}
-        <CarouselButton position="right" handleClick={buttonClickHandler}/>
+        <CarouselButton position="right" index={nextIndex} handleClick={setIndex}/>
       </div>
-      <CarouselDots number={maxLength} shown={showDataIndex} dotClickHandler={dotClickHandler}/>
+      <CarouselDots number={maxLength} shown={showDataIndex} dotClickHandler={setIndex}/>
     </>
   )
 }
