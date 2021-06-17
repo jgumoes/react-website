@@ -1,0 +1,33 @@
+form .address-container {
+  display: grid;
+  grid-template-areas:
+    "top1 top1 top2 top2"
+    "bottom1 bottom2 bottom3 bottom4";
+}
+
+.address-container .form-element input{
+  width: 100%;
+}
+
+.address-container .form-element#AddressLine1 {
+  grid-area: top1;
+}
+
+.address-container .form-element#AddressLine2 {
+  grid-area: top2;
+}
+.address-container .form-element#CityTown {
+  grid-area: bottom1;
+}
+
+.address-container .form-element#StateCounty {
+  grid-area: bottom2;
+}
+
+.address-container .form-element#Postcode {
+  grid-area: bottom3;
+}
+
+.address-container .form-element#Country {
+  grid-area: bottom4;
+}

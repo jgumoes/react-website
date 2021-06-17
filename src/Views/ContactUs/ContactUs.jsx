@@ -1,4 +1,5 @@
 import React from 'react'
+import AddressFormContainer from '../../components/AddressFormContainer/AddressFormContainer'
 import LightButton from '../../components/LightButton/LightButton'
 import './ContactUs.css'
 
@@ -93,9 +94,7 @@ class ContactUs extends React.Component {
           <label htmlFor="bIncludeAddressDetails">Add address details</label>
         </div>
         {checkboxState === true &&
-        <div className="address-container">
-          Look at me i'm an address container
-        </div>
+          <AddressFormContainer changeHandler={this.onChangeHandler} />
         }
       </form>
     )
