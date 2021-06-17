@@ -24,6 +24,12 @@ function App() {
           <Main />
         </Router>
       </Switch>
+
+      <footer>
+        <div className="content">
+          Website Development by &nbsp; <u>AVAMAE</u>
+        </div>
+      </footer>
     </Router>
   );
 }

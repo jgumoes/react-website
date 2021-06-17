@@ -1,0 +1,15 @@
+footer {
+  margin-inline: var(--page-margin);
+  height: 56px;
+}
+
+footer .content {
+  height: 100%;
+  width: 100%;
+  border-top: 1px solid #eaeaea;
+  color: #bbbbbd;
+  font-size: 11px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
