@@ -24,7 +24,7 @@ const FirstCard = ({ props }) => {
         <h2>{header}</h2>
         <p>{body}</p>
         <ul>
-          {listItems.map(li => <li>{li}</li>)}
+          {listItems.map((li, i) => <li key={i}>{li}</li>)}
         </ul>
         <BlueButton text="Learn more" route="/about"/>
       </div>
@@ -56,7 +56,7 @@ const ThirdCard = ({ props }) => {
       <h3>{subHeader}</h3>
       <div className="paragraph-container">
         <p><b>{leadParagraph}</b></p>
-        {body.map(b => <p>{b}</p>)}
+        {body.map((b, i) => <p key={i}>{b}</p>)}
       </div>
       <BlueButton text="Contact us" route="/contact"/>
     </div>
