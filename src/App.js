@@ -1,4 +1,5 @@
 import Main from './Views/Main/Main';
+import ContactUs from './Views/ContactUs/ContactUs';
 import './App.css'
 import NavBar from './components/NavBar/NavBar';
 
@@ -15,7 +16,7 @@ function App() {
 
       <Switch>
         <Route path="/contact">
-          <div>Contact us with this here form</div>
+          <ContactUs />
         </Route>
         <Route path="/about">
           <div>About Us</div>

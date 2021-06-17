@@ -1,10 +1,7 @@
 import './LightButton.css'
-const LightButton = (props) => {
-  const { text } = props
-  const ID = props.ID || ""
-  console.log("ID", ID)
+const LightButton = ({ text, ID ="", clickHandler = ()=> "", type = "button"}) => {
   return(
-    <button className="light-button" id={ID}>
+    <button type={type} className="light-button" id={ID} onClick={clickHandler}>
       {text}
     </button>
   )
