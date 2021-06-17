@@ -34,6 +34,32 @@ describe('ContactUs', () => {
       button.simulate('click')
       expect(container.find('input#PhoneNumber-02')).toHaveLength(1)
     })
+
+    it.todo("shouldn't create another PhoneNumber field if there are unfilled PhoneNumbers")
     
+  });
+
+  it('should contain a Message field', () => {
+    expect(container.find('textarea#Message')).toHaveLength(1)
+  });
+
+  it('should contain a checkbox to add address details', () => {
+    expect(container.find("input[type='checkbox']#bIncludeAddressDetails")).toHaveLength(1)
+  });
+  
+  it("shouldn't render the address container by default", () => {
+    expect(container.find(".address-container")).toHaveLength(0)
+  })
+  describe('Addresses', () => {
+    const checkboxID = "bIncludeAddressDetails"
+    let checkbox
+    beforeEach(() => (
+      checkbox = container.find("input[type='checkbox']#bIncludeAddressDetails"),
+      checkbox.simulate('change', { target: { name: checkboxID, checked: true}})
+    ));
+
+    it("clicking the checkbox should render the container", () => {
+      expect(container.find(".address-container")).toHaveLength(1)
+    })
   });
 });

@@ -7,7 +7,7 @@ const PhoneNumber = ({ N }) => {
     const objectID = `PhoneNumber-${N}`
     return(
       <div className="form-element phone-number">
-        <label>Phone number {N} <i className="sub-label">- optional</i></label><br/>
+        <label htmlFor={objectID}>Phone number {N} <i className="sub-label">- optional</i></label><br/>
         <input type="text" id={objectID} name={objectID}></input>
       </div>
   )
@@ -17,34 +17,86 @@ class ContactUs extends React.Component {
   constructor(){
     super()
     this.state = {
-      numberList: [0]
+      numberList: [0],
+      showAddress: false,
+      formData: {
+        "FullName": "",
+        "EmailAddress": "",
+        "PhoneNumbers": [
+          ""
+        ],
+        "Message": "",
+        "bIncludeAddressDetails": false,
+        "AddressDetails": {
+          "AddressLine1": "",
+          "AddressLine2": "",
+          "CityTown": "",
+          "StateCounty": "",
+          "Postcode": "",
+          "Country": ""
+        }
+      }
     }
   }
 
-
   addPhoneNumber = () => {
-    console.log('click')
     let numberList = this.state.numberList
     numberList.push(numberList.length)
     this.setState({ numberList: numberList})
   }
+
+  onChangeHandler = (event) => {
+    // console.log(event)
+    this.setForm(event.target.name, event.target.value)
+  }
+
+  checkboxChangeHandler = (event) => {
+    // console.log('click')
+    this.setForm(event.target.name, event.target.checked)
+  }
+  
+  phoneChangeHandler = (event) => {
+  }
+
+  setForm = (targetName, targetData) => {
+    // console.log(targetName, targetData)
+    let newFormData = this.state.formData
+    newFormData[targetName] = targetData
+    this.setState({formData: newFormData})
+  }
   
   render(){
+    var checkboxState = this.state.formData.bIncludeAddressDetails
     return(
       <form>
-        <div className="form-element" id="FullName">
-          <label for="FullName">Full name</label><br/>
-          <input type="text" id="FullName" name="FullName" required></input>
-        </div>
-        <div className="form-element" id="EmailAddress">
-          <label for="EmailAddress">Email address</label><br/>
+        <div className="first-line">
+        <label className="form-element" id="FullName" htmlFor="FullName">Full name<br/>
+          <input type="text" id="FullName" name="FullName" onChange={this.onChangeHandler} required></input>
+        </label>
+        
+        <label className="form-element" id="EmailAddress" htmlFor="EmailAddress">Email address<br/>
           <input type="text" id="EmailAddress" name="EmailAddress" required></input>
+        </label>
         </div>
-        {/* <this.PhoneNumber N="1" /> */}
+
         {this.state.numberList.map((n, i) => <PhoneNumber N={String(n+1)} key={i}/>)}
-        <div className="form-element" id="add-phone-number">
-          <LightButton text="Add new phone number" ID="add-phone-number" clickHandler={this.addPhoneNumber} />
+
+        <LightButton className="form-element" text="Add new phone number" ID="add-phone-number" clickHandler={this.addPhoneNumber} />
+
+        <div className="form-element" id="Message">
+          <label htmlFor="Message">Message <span className="sub-label"> Maximum text length is 500 characters</span></label><br/>
+          <textarea type="textArea" id="Message" name="Message" required></textarea>
         </div>
+
+        <div className="form-element" id="bIncludeAddressDetails">
+          <input type="checkbox" id="bIncludeAddressDetails" name="bIncludeAddressDetails" onChange={this.checkboxChangeHandler} checked={checkboxState} />
+          <label htmlFor="bIncludeAddressDetails">Add address details</label>
+        </div>
+        {checkboxState === true &&
+        <div className="address-container">
+          Look at me i'm an address container
+        </div>
+        }
       </form>
     )
   }

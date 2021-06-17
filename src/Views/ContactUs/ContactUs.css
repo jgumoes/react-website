@@ -1,4 +1,4 @@
 
-input[type=text]#FullName{
-  /* background-color: blue; */
+form .first-line{
+  display: flex;
 }
