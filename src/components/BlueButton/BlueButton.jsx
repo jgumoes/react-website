@@ -1,8 +1,13 @@
 import { Link, useHistory } from 'react-router-dom'
 import './BlueButton.css'
 
-const BlueButton = ({ text, route="" }) => {
+const reloadWindow = () => {
+  window.location.reload()
+}
+
+const BlueButton = ({ text, route="", reloadingFunction }) => {
   let history = useHistory()
+  reloadingFunction = reloadingFunction || reloadWindow
 
   const goToPage = () => {
     // this function is less than ideal, but the router won't
@@ -10,7 +15,7 @@ const BlueButton = ({ text, route="" }) => {
     console.log(route)
     history.push(route)
     if (route !== "") {
-      window.location.reload()
+      reloadingFunction()
     }
   }
 
