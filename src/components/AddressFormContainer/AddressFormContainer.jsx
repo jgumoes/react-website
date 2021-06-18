@@ -6,7 +6,7 @@ const AddressFormContainer = ({changeHandler, formData}) => {
   return(
     <div className="address-container">
       <label className="form-element address-top" id="AddressLine1" htmlFor="AddressLine1">Address line 1<br/>
-        <input type="text" id="AddressLine1" name="AddressLine1" onChange={(event) => changeHandler(event)} required></input>
+        <input type="text" id="AddressLine1" name="AddressLine1" onChange={(event) => changeHandler(event)} value={AddressDetails.AddressLine1} required></input>
       </label>
 
       <label className="form-element address-top" id="AddressLine2" htmlFor="AddressLine2">Address line 2 <i className="sub-label">- optional</i><br/>

@@ -61,6 +61,13 @@ class ContactUs extends React.Component {
     this.setForm(event.target.name, event.target.value)
   }
 
+  addressChangeHandler = (event) => {
+    let AddressDetails = this.state.formData.AddressDetails
+    AddressDetails[event.target.name] = event.target.value
+    // console.log(event.target.name, event.target.value)
+    this.setForm("AddressDetails", AddressDetails)
+  }
+
   checkboxChangeHandler = (event) => {
     // console.log('click')
     // this.setForm(event.target.name, event.target.checked)
@@ -144,7 +151,7 @@ class ContactUs extends React.Component {
             <label htmlFor="bIncludeAddressDetails" onClick={this.checkboxChangeHandler}>Add address details</label>
           </div>
           {checkboxState === true &&
-            <AddressFormContainer changeHandler={this.onChangeHandler} formData={formData} />
+            <AddressFormContainer changeHandler={this.addressChangeHandler} formData={formData} />
           }
           <button type="submit" className="form-element blue-button" >
             <img src={SubmitIcon} alt="" />
