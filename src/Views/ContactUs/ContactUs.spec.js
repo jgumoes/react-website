@@ -20,22 +20,38 @@ describe('ContactUs', () => {
     expect(container.find('input#PhoneNumber-01')).toHaveLength(1)
   });
 
+
+  const phoneNumberEvent = { target: { value: '0118 999 881 999 119 7253', name: "PhoneNumber-01"}}
+  it('should add a phone number to the form data', () => {
+    const phoneNumber = container.find("input[type='text']#PhoneNumber-01")
+    phoneNumber.simulate('change', phoneNumberEvent)
+    console.log(container.state('formData'))
+    expect(container.state('formData')["PhoneNumbers"]).toContain('0118 999 881 999 119 7253')
+  })
+
   describe('AddPhoneNumber button', () => {
     let button
+    let phoneNumber1
 
-    beforeEach(() => (
-      button = container.find('button#add-phone-number')
-    ));
+    beforeEach(() => {
+      button = container.find('button#add-phone-number');
+      phoneNumber1 = container.find("input[type='text']#PhoneNumber-01");
+    });
+
     it('should exist', () => {
       expect(button.exists()).toBe(true)
     });
 
     it('should create another PhoneNumber field when clicked', () => {
+      phoneNumber1.simulate('change', phoneNumberEvent)
       button.simulate('click')
       expect(container.find('input#PhoneNumber-02')).toHaveLength(1)
     })
 
-    it.todo("shouldn't create another PhoneNumber field if there are unfilled PhoneNumbers")
+    it("shouldn't create another PhoneNumber field if there are unfilled PhoneNumbers", () => {
+      button.simulate('click')
+      expect(container.find('input#PhoneNumber-02')).toHaveLength(0)
+    })
     
   });
 
@@ -67,6 +83,8 @@ describe('ContactUs', () => {
     it('should exist', () => {
       expect(container.find("button[type='submit']")).toHaveLength(1)
     });
+
+    it.todo("should send a form through a form-sending function")
     
   });
 });

@@ -6,16 +6,15 @@ import './ContactUs.css'
 import '../StaticText.css'
 import './CustomCheckbox.css'
 import SubmitIcon from '../../Resources/Icon_Submit.svg'
-import ImgContact from '../../Resources/Img_Contact.png'
 import ContactUsStatic from '../../Resources/ContactUs.json'
 
-const PhoneNumber = ({ N }) => {
+const PhoneNumber = ({ N, onChange }) => {
     N = N.length === 1 ? "0"+N : N
     const objectID = `PhoneNumber-${N}`
     return(
       <div className="form-element phone-number">
         <label htmlFor={objectID}>Phone number {N} <i className="sub-label">- optional</i></label><br/>
-        <input type="text" id={objectID} name={objectID}></input>
+        <input type="text" id={objectID} name={objectID} onChange={onChange} ></input>
       </div>
   )
 }
@@ -49,7 +48,10 @@ class ContactUs extends React.Component {
   addPhoneNumber = () => {
     let numberList = this.state.numberList
     numberList.push(numberList.length)
-    this.setState({ numberList: numberList})
+    let phoneNumbers = this.state.formData.PhoneNumbers
+    if(phoneNumbers.length !== 0 && !phoneNumbers.includes("")){
+      this.setState({ numberList: numberList})
+    }
   }
 
   onChangeHandler = (event) => {
@@ -64,6 +66,17 @@ class ContactUs extends React.Component {
   }
   
   phoneChangeHandler = (event) => {
+    const targetName = event.target.name
+    const N = /(?:-0)(?<N>\S+)/g.exec(targetName).groups.N-1
+    let phoneNumbers = this.state.formData.PhoneNumbers
+    // console.log(phoneNumbers)
+    phoneNumbers[N] = event.target.value
+    this.setForm(targetName, phoneNumbers)
+  }
+
+  handleOnSubmit = (event) => {
+    console.log("submit button")
+    event.preventDefault()
   }
 
   setForm = (targetName, targetData) => {
@@ -78,7 +91,7 @@ class ContactUs extends React.Component {
     
     return(
       <div className="contact-page-container">
-        <form className="contact-us-form">
+        <form className="contact-us-form" onSubmit={this.handleOnSubmit} >
           <h3 className="static-text">Contact us</h3>
           <p className="static-text"><b>{ContactUsStatic["sub-header"]}</b></p>
           <div className="first-line">
@@ -93,7 +106,7 @@ class ContactUs extends React.Component {
             </div>
           </div>
 
-          {this.state.numberList.map((n, i) => <PhoneNumber N={String(n+1)} key={i}/>)}
+          {this.state.numberList.map((n, i) => <PhoneNumber N={String(n+1)} key={i} onChange={this.phoneChangeHandler} />)}
 
           <LightButton className="form-element" text="Add new phone number" ID="add-phone-number" clickHandler={this.addPhoneNumber} />
 
@@ -110,7 +123,7 @@ class ContactUs extends React.Component {
           {checkboxState === true &&
             <AddressFormContainer changeHandler={this.onChangeHandler} />
           }
-          <button type="submit" className="form-element blue-button" onClick={() => console.log('submit')} >
+          <button type="submit" className="form-element blue-button" >
             <img src={SubmitIcon} alt="" />
             <span>Submit</span>
           </button>
