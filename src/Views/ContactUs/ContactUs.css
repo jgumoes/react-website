@@ -32,26 +32,6 @@
 
 .contact-us-form .form-element {margin: 2.5px 0; width: 100%;}
 
-.contact-us-form .form-element input[type="checkbox"]{
-  width: unset;
-  height: unset;
-  opacity: 0;
-  position: absolute;
-}
-
-.contact-us-form .form-element#bIncludeAddressDetails {
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-
-.contact-us-form .form-element .custom-checkbox{
-  width: 15px;
-  height: 15px;
-  margin-right: 7px;
-}
-
 .contact-us-form label {
   font-weight: 400;
   font-size: var(--static-body-font-size);
@@ -61,7 +41,7 @@
 
 .contact-us-form label .sub-label {
   color: #c3c4c7;
-  text-shadow: 0 0 1px #c3c4c7;
+  text-shadow: 0 0 0.5px #c3c4c7;
 }
 
 .form-element#Message .sub-label{float: right;}

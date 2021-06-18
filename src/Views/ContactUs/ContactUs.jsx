@@ -3,6 +3,7 @@ import AddressFormContainer from '../../components/AddressFormContainer/AddressF
 import LightButton from '../../components/LightButton/LightButton'
 import './ContactUs.css'
 import '../StaticText.css'
+import './CustomCheckbox.css'
 import ContactUsStatic from '../../Resources/ContactUs.json'
 
 const PhoneNumber = ({ N }) => {
