@@ -8,13 +8,14 @@ import './CustomCheckbox.css'
 import SubmitIcon from '../../Resources/Icon_Submit.svg'
 import ContactUsStatic from '../../Resources/ContactUs.json'
 
-const PhoneNumber = ({ N, onChange }) => {
+const PhoneNumber = ({ N, onChange, formData }) => {
+  const i = N-1
     N = N.length === 1 ? "0"+N : N
     const objectID = `PhoneNumber-${N}`
     return(
       <div className="form-element phone-number">
         <label htmlFor={objectID}>Phone number {N} <i className="sub-label">- optional</i></label><br/>
-        <input type="text" id={objectID} name={objectID} onChange={onChange} maxLength="20" pattern="[0-9]" ></input>
+        <input type="text" id={objectID} name={objectID} onChange={onChange} maxLength="20" value={formData.PhoneNumbers[i]} ></input>
       </div>
   )
 }
@@ -56,7 +57,7 @@ class ContactUs extends React.Component {
   }
 
   onChangeHandler = (event) => {
-    console.log(event)
+    console.log(event.target.name, event.target.value)
     this.setForm(event.target.name, event.target.value)
   }
 
@@ -81,6 +82,7 @@ class ContactUs extends React.Component {
   handleOnSubmit = (event) => {
     console.log("submit button")
     event.preventDefault()
+    // todo: add a function that reads all the form fields (incase of autofill)
     this.sendForm()
   }
 
@@ -88,6 +90,7 @@ class ContactUs extends React.Component {
     // console.log(targetName, targetData)
     let newFormData = this.state.formData
     newFormData[targetName] = targetData
+    console.log(newFormData)
     this.setState({formData: newFormData})
   }
 
@@ -111,22 +114,22 @@ class ContactUs extends React.Component {
     
     return(
       <div className="contact-page-container">
-        <form className="contact-us-form" onSubmit={this.handleOnSubmit} >
+        <form className="contact-us-form" onSubmit={this.handleOnSubmit} autoComplete="off" >
           <h3 className="static-text">Contact us</h3>
           <p className="static-text"><b>{ContactUsStatic["sub-header"]}</b></p>
           <div className="first-line">
             <div className="form-element">
               <label className="form-element" id="FullName" htmlFor="FullName">Full name</label>.
-              <input type="text" id="FullName" name="FullName" onChange={this.onChangeHandler} required></input>
+              <input type="text" id="FullName" name="FullName" onChange={this.onChangeHandler} value={formData.FullName} required></input>
             </div>
             
             <div className="form-element">
-              <label className="form-element" id="EmailAddress" htmlFor="EmailAddress" onChange={this.onChangeHandler} value={formData.EmailAddress}>Email address</label>
-              <input type="text" id="EmailAddress" name="EmailAddress" required></input>
+              <label className="form-element" id="EmailAddress" htmlFor="EmailAddress" >Email address</label>
+              <input type="text" id="EmailAddress" name="EmailAddress" onChange={this.onChangeHandler} value={formData.EmailAddress} required></input>
             </div>
           </div>
 
-          {this.state.numberList.map((n, i) => <PhoneNumber N={String(n+1)} key={i} onChange={this.phoneChangeHandler} />)}
+          {this.state.numberList.map((n, i) => <PhoneNumber N={String(n+1)} key={i} onChange={this.phoneChangeHandler} formData={formData} />)}
 
           <LightButton className="form-element" text="Add new phone number" ID="add-phone-number" clickHandler={this.addPhoneNumber} />
 
@@ -141,7 +144,7 @@ class ContactUs extends React.Component {
             <label htmlFor="bIncludeAddressDetails" onClick={this.checkboxChangeHandler}>Add address details</label>
           </div>
           {checkboxState === true &&
-            <AddressFormContainer changeHandler={this.onChangeHandler} />
+            <AddressFormContainer changeHandler={this.onChangeHandler} formData={formData} />
           }
           <button type="submit" className="form-element blue-button" >
             <img src={SubmitIcon} alt="" />
