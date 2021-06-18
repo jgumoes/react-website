@@ -1,9 +1,11 @@
 import React from 'react'
 import AddressFormContainer from '../../components/AddressFormContainer/AddressFormContainer'
 import LightButton from '../../components/LightButton/LightButton'
+import '../../components/BlueButton/BlueButton.css'
 import './ContactUs.css'
 import '../StaticText.css'
 import './CustomCheckbox.css'
+import SubmitIcon from '../../Resources/Icon_Submit.svg'
 import ContactUsStatic from '../../Resources/ContactUs.json'
 
 const PhoneNumber = ({ N }) => {
@@ -95,7 +97,7 @@ class ContactUs extends React.Component {
 
         <div className="form-element" id="Message">
           <label htmlFor="Message">Message <span className="sub-label">Maximum text length is 500 characters</span></label><br/>
-          <textarea type="textArea" id="Message" name="Message" required></textarea>
+          <textarea type="textArea" id="Message" name="Message" maxLength="500" required></textarea>
         </div>
 
         <div className="form-element" id="bIncludeAddressDetails">
@@ -106,6 +108,10 @@ class ContactUs extends React.Component {
         {checkboxState === true &&
           <AddressFormContainer changeHandler={this.onChangeHandler} />
         }
+        <button type="submit" className="form-element blue-button" onClick={() => console.log('submit')} >
+          <img src={SubmitIcon} alt="" />
+          <span>Submit</span>
+        </button>
       </form>
     )
   }

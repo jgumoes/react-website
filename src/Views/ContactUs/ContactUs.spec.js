@@ -7,12 +7,12 @@ describe('ContactUs', () => {
     container = mount(<ContactUs />)
   ));
   it('should contain a FullName field', () => {
-    const field = container.find('.form-element#FullName')
+    const field = container.find('.form-element #FullName')
     expect(field.find('input')).toHaveLength(1)
   });
 
   it('should contain an EmailAddress field', () => {
-    const field = container.find('.form-element#EmailAddress')
+    const field = container.find('.form-element #EmailAddress')
     expect(field.find('input')).toHaveLength(1)
   });
 
@@ -61,5 +61,12 @@ describe('ContactUs', () => {
     it("clicking the checkbox should render the container", () => {
       expect(container.find(".address-container")).toHaveLength(1)
     })
+  });
+
+  describe('Submit button', () => {
+    it('should exist', () => {
+      expect(container.find("button[type='submit']")).toHaveLength(1)
+    });
+    
   });
 });

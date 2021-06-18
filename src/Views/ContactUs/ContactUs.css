@@ -1,13 +1,15 @@
 
 .contact-us-form .first-line{
-  display: flex;
+  display: grid;
   width: 100%;
-  justify-content: space-between;
+  grid-template-columns: 1fr 1fr;
+  column-gap: var(--contact-form-column-gap);
 }
 
 .contact-us-form{
-  padding: var(--static-page-vertical-padding) 0px;
+  padding: var(--static-page-vertical-padding) var(--page-margin);
   max-width: 485px;
+  min-height: 609px;
 }
 
 .contact-us-form .form-element input, .contact-us-form .form-element textarea, .contact-us-form .form-element .custom-checkbox {
@@ -18,6 +20,7 @@
   border: 2px solid #edeeee;
   border-radius: var(--button-border-radius);
   margin: 6px 0;
+  resize: none;
 }
 
 .contact-us-form .form-element textarea{
@@ -47,3 +50,20 @@
 .form-element#Message .sub-label{float: right;}
 
 .contact-us-form p.static-text{margin-bottom: 18px;}
+
+button[type="submit"].form-element{
+  height: 37px;
+  padding-inline: 10px;
+  margin-top: 20px;
+}
+
+button[type="submit"].form-element img{
+  height: 100%;
+  float: left;
+}
+
+button[type="submit"].form-element span{
+  position: relative;
+  right: 16.25px;
+  font-weight: bold;
+}

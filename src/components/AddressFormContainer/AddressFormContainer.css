@@ -1,8 +1,15 @@
+:root{
+  --contact-form-column-gap: 19px;
+}
+
 form .address-container {
   display: grid;
   grid-template-areas:
     "top1 top1 top2 top2"
     "bottom1 bottom2 bottom3 bottom4";
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: var(--contact-form-column-gap);
+  margin-top: 4px;
 }
 
 .address-container .form-element input{
@@ -30,4 +37,8 @@ form .address-container {
 
 .address-container .form-element#Country {
   grid-area: bottom4;
+}
+
+.contact-us-form .address-container .form-element{
+  margin: 6px 0;
 }
