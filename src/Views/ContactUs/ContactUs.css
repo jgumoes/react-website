@@ -1,3 +1,17 @@
+.contact-page-container{
+  margin-left: var(--page-margin);
+  display: flex;
+  background-image: url('../../Resources/Img_Contact.png');
+  background-repeat: no-repeat;
+  background-position: 540px -49px;
+  background-size: 495px;
+}
+
+.contact-us-form{
+  min-height: 733px;
+  padding: var(--static-page-vertical-padding) 0;
+  max-width: 485px;
+}
 
 .contact-us-form .first-line{
   display: grid;
@@ -6,11 +20,6 @@
   column-gap: var(--contact-form-column-gap);
 }
 
-.contact-us-form{
-  padding: var(--static-page-vertical-padding) var(--page-margin);
-  max-width: 485px;
-  min-height: 609px;
-}
 
 .contact-us-form .form-element input, .contact-us-form .form-element textarea, .contact-us-form .form-element .custom-checkbox {
   box-sizing: border-box;
@@ -55,6 +64,7 @@ button[type="submit"].form-element{
   height: 37px;
   padding-inline: 10px;
   margin-top: 20px;
+  margin-bottom: 25px;
 }
 
 button[type="submit"].form-element img{

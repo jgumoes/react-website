@@ -6,6 +6,7 @@ import './ContactUs.css'
 import '../StaticText.css'
 import './CustomCheckbox.css'
 import SubmitIcon from '../../Resources/Icon_Submit.svg'
+import ImgContact from '../../Resources/Img_Contact.png'
 import ContactUsStatic from '../../Resources/ContactUs.json'
 
 const PhoneNumber = ({ N }) => {
@@ -76,43 +77,46 @@ class ContactUs extends React.Component {
     var checkboxState = this.state.formData.bIncludeAddressDetails
     
     return(
-      <form className="contact-us-form">
-        <h3 className="static-text">Contact us</h3>
-        <p className="static-text"><b>{ContactUsStatic["sub-header"]}</b></p>
-        <div className="first-line">
-          <div className="form-element">
-            <label className="form-element" id="FullName" htmlFor="FullName">Full name</label>.
-            <input type="text" id="FullName" name="FullName" onChange={this.onChangeHandler} required></input>
+      <div className="contact-page-container">
+        <form className="contact-us-form">
+          <h3 className="static-text">Contact us</h3>
+          <p className="static-text"><b>{ContactUsStatic["sub-header"]}</b></p>
+          <div className="first-line">
+            <div className="form-element">
+              <label className="form-element" id="FullName" htmlFor="FullName">Full name</label>.
+              <input type="text" id="FullName" name="FullName" onChange={this.onChangeHandler} required></input>
+            </div>
+            
+            <div className="form-element">
+              <label className="form-element" id="EmailAddress" htmlFor="EmailAddress">Email address</label>
+              <input type="text" id="EmailAddress" name="EmailAddress" required></input>
+            </div>
           </div>
-          
-          <div className="form-element">
-            <label className="form-element" id="EmailAddress" htmlFor="EmailAddress">Email address</label>
-            <input type="text" id="EmailAddress" name="EmailAddress" required></input>
+
+          {this.state.numberList.map((n, i) => <PhoneNumber N={String(n+1)} key={i}/>)}
+
+          <LightButton className="form-element" text="Add new phone number" ID="add-phone-number" clickHandler={this.addPhoneNumber} />
+
+          <div className="form-element" id="Message">
+            <label htmlFor="Message">Message <span className="sub-label">Maximum text length is 500 characters</span></label><br/>
+            <textarea type="textArea" id="Message" name="Message" maxLength="500" required></textarea>
           </div>
-        </div>
 
-        {this.state.numberList.map((n, i) => <PhoneNumber N={String(n+1)} key={i}/>)}
-
-        <LightButton className="form-element" text="Add new phone number" ID="add-phone-number" clickHandler={this.addPhoneNumber} />
-
-        <div className="form-element" id="Message">
-          <label htmlFor="Message">Message <span className="sub-label">Maximum text length is 500 characters</span></label><br/>
-          <textarea type="textArea" id="Message" name="Message" maxLength="500" required></textarea>
-        </div>
-
-        <div className="form-element" id="bIncludeAddressDetails">
-          <input type="checkbox" id="bIncludeAddressDetails" name="bIncludeAddressDetails" onChange={this.checkboxChangeHandler} checked={checkboxState} />
-          <div type="button" className="custom-checkbox" onClick={this.checkboxChangeHandler}><div className="custom-checkmark"></div></div>
-          <label htmlFor="bIncludeAddressDetails" onClick={this.checkboxChangeHandler}>Add address details</label>
-        </div>
-        {checkboxState === true &&
-          <AddressFormContainer changeHandler={this.onChangeHandler} />
-        }
-        <button type="submit" className="form-element blue-button" onClick={() => console.log('submit')} >
-          <img src={SubmitIcon} alt="" />
-          <span>Submit</span>
-        </button>
-      </form>
+          <div className="form-element" id="bIncludeAddressDetails">
+            <input type="checkbox" id="bIncludeAddressDetails" name="bIncludeAddressDetails" onChange={this.checkboxChangeHandler} checked={checkboxState} />
+            <div type="button" className="custom-checkbox" onClick={this.checkboxChangeHandler}><div className="custom-checkmark"></div></div>
+            <label htmlFor="bIncludeAddressDetails" onClick={this.checkboxChangeHandler}>Add address details</label>
+          </div>
+          {checkboxState === true &&
+            <AddressFormContainer changeHandler={this.onChangeHandler} />
+          }
+          <button type="submit" className="form-element blue-button" onClick={() => console.log('submit')} >
+            <img src={SubmitIcon} alt="" />
+            <span>Submit</span>
+          </button>
+        </form>
+        {/* <img src={ImgContact} alt="" /> */}
+      </div>
     )
   }
 }
