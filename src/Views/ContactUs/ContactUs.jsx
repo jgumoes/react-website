@@ -2,6 +2,8 @@ import React from 'react'
 import AddressFormContainer from '../../components/AddressFormContainer/AddressFormContainer'
 import LightButton from '../../components/LightButton/LightButton'
 import './ContactUs.css'
+import '../StaticText.css'
+import ContactUsStatic from '../../Resources/ContactUs.json'
 
 const PhoneNumber = ({ N }) => {
     N = N.length === 1 ? "0"+N : N
@@ -53,7 +55,8 @@ class ContactUs extends React.Component {
 
   checkboxChangeHandler = (event) => {
     // console.log('click')
-    this.setForm(event.target.name, event.target.checked)
+    // this.setForm(event.target.name, event.target.checked)
+    this.setForm("bIncludeAddressDetails", !this.state.formData.bIncludeAddressDetails)
   }
   
   phoneChangeHandler = (event) => {
@@ -68,16 +71,21 @@ class ContactUs extends React.Component {
   
   render(){
     var checkboxState = this.state.formData.bIncludeAddressDetails
+    
     return(
-      <form>
+      <form className="contact-us-form">
+        <h3 className="static-text">Contact us</h3>
+        <p className="static-text"><b>{ContactUsStatic["sub-header"]}</b></p>
         <div className="first-line">
-        <label className="form-element" id="FullName" htmlFor="FullName">Full name<br/>
-          <input type="text" id="FullName" name="FullName" onChange={this.onChangeHandler} required></input>
-        </label>
-        
-        <label className="form-element" id="EmailAddress" htmlFor="EmailAddress">Email address<br/>
-          <input type="text" id="EmailAddress" name="EmailAddress" required></input>
-        </label>
+          <div className="form-element">
+            <label className="form-element" id="FullName" htmlFor="FullName">Full name</label>.
+            <input type="text" id="FullName" name="FullName" onChange={this.onChangeHandler} required></input>
+          </div>
+          
+          <div className="form-element">
+            <label className="form-element" id="EmailAddress" htmlFor="EmailAddress">Email address</label>
+            <input type="text" id="EmailAddress" name="EmailAddress" required></input>
+          </div>
         </div>
 
         {this.state.numberList.map((n, i) => <PhoneNumber N={String(n+1)} key={i}/>)}
@@ -85,13 +93,14 @@ class ContactUs extends React.Component {
         <LightButton className="form-element" text="Add new phone number" ID="add-phone-number" clickHandler={this.addPhoneNumber} />
 
         <div className="form-element" id="Message">
-          <label htmlFor="Message">Message <span className="sub-label"> Maximum text length is 500 characters</span></label><br/>
+          <label htmlFor="Message">Message <span className="sub-label">Maximum text length is 500 characters</span></label><br/>
           <textarea type="textArea" id="Message" name="Message" required></textarea>
         </div>
 
         <div className="form-element" id="bIncludeAddressDetails">
           <input type="checkbox" id="bIncludeAddressDetails" name="bIncludeAddressDetails" onChange={this.checkboxChangeHandler} checked={checkboxState} />
-          <label htmlFor="bIncludeAddressDetails">Add address details</label>
+          <button type="button" className="custom-checkbox" onClick={this.checkboxChangeHandler}><span className="custom-checkmark" /></button>
+          <label htmlFor="bIncludeAddressDetails" onClick={this.checkboxChangeHandler}>Add address details</label>
         </div>
         {checkboxState === true &&
           <AddressFormContainer changeHandler={this.onChangeHandler} />

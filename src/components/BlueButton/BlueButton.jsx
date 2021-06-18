@@ -5,7 +5,7 @@ const reloadWindow = () => {
   window.location.reload()
 }
 
-const BlueButton = ({ text, route="", reloadingFunction }) => {
+const BlueButton = ({ text, route="", reloadingFunction, className="" }) => {
   let history = useHistory()
   reloadingFunction = reloadingFunction || reloadWindow
 
@@ -21,7 +21,7 @@ const BlueButton = ({ text, route="", reloadingFunction }) => {
 
   return(
     <Link to={route}>
-      <button className="blue-button" onClick={goToPage}>
+      <button className={`blue-button ${className}`} onClick={goToPage}>
         <b>{text}</b>
       </button>
     </Link>

@@ -1,0 +1,25 @@
+:root{
+  --static-page-vertical-padding: 34px;
+  --static-body-font-size: 11px;
+}
+
+.static-text{
+  color: var(--dark-text-color);
+}
+
+h3.static-text {
+  font-weight: 400;
+  text-shadow: 0 0 0.5px var(--dark-text-color);
+  margin-bottom: 21px;
+}
+
+p.static-text{
+  font-size: var(--static-body-font-size);
+  text-shadow: 0 0 0.5px var(--dark-text-color);
+  line-height: 20px;
+}
+
+p.static-text b{
+  font-weight: 400;
+  text-shadow: 0 0 1px var(--dark-text-color);
+}
