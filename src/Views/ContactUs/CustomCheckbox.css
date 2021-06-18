@@ -1,9 +1,15 @@
+:root{
+  --checked-blue: 
+}
+
 .contact-us-form .form-element input[type="checkbox"]{
   width: unset;
   height: unset;
   opacity: 0;
   position: absolute;
 }
+
+.contact-us-form .form-element label:hover{cursor: pointer;}
 
 .contact-us-form .form-element#bIncludeAddressDetails {
   display: flex;
@@ -15,4 +21,28 @@
   width: 15px;
   height: 15px;
   margin-right: 7px;
+}
+
+.custom-checkmark{
+  background-color: #2f7bb8;
+  height: 100%;
+  width: 100%;
+  border-radius: var(--button-border-radius);
+  opacity: 0;
+}
+
+.custom-checkbox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1px;
+}
+
+.contact-us-form .form-element input[type="checkbox"]:checked + .custom-checkbox .custom-checkmark{
+  opacity: 1;
+}
+
+.contact-us-form .form-element input[type="checkbox"]:checked + .custom-checkbox{
+  border: 2px solid #679ecc;
+  background-color: #d0e2f1;
 }

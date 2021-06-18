@@ -100,7 +100,7 @@ class ContactUs extends React.Component {
 
         <div className="form-element" id="bIncludeAddressDetails">
           <input type="checkbox" id="bIncludeAddressDetails" name="bIncludeAddressDetails" onChange={this.checkboxChangeHandler} checked={checkboxState} />
-          <button type="button" className="custom-checkbox" onClick={this.checkboxChangeHandler}><span className="custom-checkmark" /></button>
+          <div type="button" className="custom-checkbox" onClick={this.checkboxChangeHandler}><div className="custom-checkmark"></div></div>
           <label htmlFor="bIncludeAddressDetails" onClick={this.checkboxChangeHandler}>Add address details</label>
         </div>
         {checkboxState === true &&
