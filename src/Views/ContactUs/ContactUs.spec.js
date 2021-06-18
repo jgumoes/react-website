@@ -1,6 +1,23 @@
 import { shallow, mount } from "enzyme";
 import ContactUs from './ContactUs'
 
+const modelFormData = {
+  "FullName": "Testy Testworth",
+  "EmailAddress": "t.testworth@notreal.net",
+  "PhoneNumbers": [
+    "0118 999 881 999 119 7253"
+  ],
+  "Message": "Test post pls ignore",
+  "bIncludeAddressDetails": true,
+  "AddressDetails": {
+    "AddressLine1": "1313 Mockingbird Lane",
+    "AddressLine2": "",
+    "CityTown": "Mockingbird Heights",
+    "StateCounty": "Transylvania",
+    "Postcode": "010101",
+    "Country": "Romania"
+  }
+}
 describe('ContactUs', () => {
   let container
   beforeEach(() => (

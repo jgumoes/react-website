@@ -1,6 +1,5 @@
 import React from 'react'
 import './CarouselButton.css'
-import { ReactComponent as Arrow } from './Icon_Arrow.svg'
 import ArrowIcon from './Icon_Arrow.svg'
 
  class CarouselButton extends React.Component {

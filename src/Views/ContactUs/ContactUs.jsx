@@ -14,7 +14,7 @@ const PhoneNumber = ({ N, onChange }) => {
     return(
       <div className="form-element phone-number">
         <label htmlFor={objectID}>Phone number {N} <i className="sub-label">- optional</i></label><br/>
-        <input type="text" id={objectID} name={objectID} onChange={onChange} ></input>
+        <input type="text" id={objectID} name={objectID} onChange={onChange} maxLength="20" pattern="[0-9]" ></input>
       </div>
   )
 }
@@ -23,14 +23,14 @@ class ContactUs extends React.Component {
   constructor(){
     super()
     this.state = {
+      awaitingFormResponse: false,
+      recievedFormResponse: false,
       numberList: [0],
       showAddress: false,
       formData: {
         "FullName": "",
         "EmailAddress": "",
-        "PhoneNumbers": [
-          ""
-        ],
+        "PhoneNumbers": [],
         "Message": "",
         "bIncludeAddressDetails": false,
         "AddressDetails": {
@@ -47,15 +47,16 @@ class ContactUs extends React.Component {
 
   addPhoneNumber = () => {
     let numberList = this.state.numberList
-    numberList.push(numberList.length)
     let phoneNumbers = this.state.formData.PhoneNumbers
-    if(phoneNumbers.length !== 0 && !phoneNumbers.includes("")){
+    console.log(phoneNumbers, numberList)
+    if(phoneNumbers.length === numberList.length){
+      numberList.push(numberList.length)
       this.setState({ numberList: numberList})
     }
   }
 
   onChangeHandler = (event) => {
-    // console.log(event)
+    console.log(event)
     this.setForm(event.target.name, event.target.value)
   }
 
@@ -69,14 +70,18 @@ class ContactUs extends React.Component {
     const targetName = event.target.name
     const N = /(?:-0)(?<N>\S+)/g.exec(targetName).groups.N-1
     let phoneNumbers = this.state.formData.PhoneNumbers
-    // console.log(phoneNumbers)
-    phoneNumbers[N] = event.target.value
-    this.setForm(targetName, phoneNumbers)
+    console.log(phoneNumbers)
+    const value = event.target.value.replace(" ", "")
+    if( value.match(/[^0-9]/g) === null){
+      phoneNumbers[N] = value
+      this.setForm(targetName, phoneNumbers)
+    }
   }
 
   handleOnSubmit = (event) => {
     console.log("submit button")
     event.preventDefault()
+    this.sendForm()
   }
 
   setForm = (targetName, targetData) => {
@@ -85,9 +90,24 @@ class ContactUs extends React.Component {
     newFormData[targetName] = targetData
     this.setState({formData: newFormData})
   }
+
+  sendForm = async () => {
+    console.log(this.state.formData)
+    await fetch("https://interview-assessment.api.avamae.co.uk/api/v1/contact-us/submit", {
+      method: 'POST',
+      headers: {
+        'accept': 'application/json',
+        'Content-Type': 'application/json-patch+json'
+      },
+      body: JSON.stringify(this.state.formData)
+    })
+    .then((res) => res.json())
+    .then((data) => console.log(data))
+  }
   
   render(){
     var checkboxState = this.state.formData.bIncludeAddressDetails
+    const formData = this.state.formData
     
     return(
       <div className="contact-page-container">
@@ -101,7 +121,7 @@ class ContactUs extends React.Component {
             </div>
             
             <div className="form-element">
-              <label className="form-element" id="EmailAddress" htmlFor="EmailAddress">Email address</label>
+              <label className="form-element" id="EmailAddress" htmlFor="EmailAddress" onChange={this.onChangeHandler} value={formData.EmailAddress}>Email address</label>
               <input type="text" id="EmailAddress" name="EmailAddress" required></input>
             </div>
           </div>
@@ -112,7 +132,7 @@ class ContactUs extends React.Component {
 
           <div className="form-element" id="Message">
             <label htmlFor="Message">Message <span className="sub-label">Maximum text length is 500 characters</span></label><br/>
-            <textarea type="textArea" id="Message" name="Message" maxLength="500" required></textarea>
+            <textarea type="textArea" id="Message" name="Message" maxLength="500" onChange={this.onChangeHandler} required></textarea>
           </div>
 
           <div className="form-element" id="bIncludeAddressDetails">
