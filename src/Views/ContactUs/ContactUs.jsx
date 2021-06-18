@@ -10,12 +10,13 @@ import ContactUsStatic from '../../Resources/ContactUs.json'
 
 const PhoneNumber = ({ N, onChange, formData }) => {
   const i = N-1
+  console.log(formData.PhoneNumbers[i])
     N = N.length === 1 ? "0"+N : N
     const objectID = `PhoneNumber-${N}`
     return(
       <div className="form-element phone-number">
         <label htmlFor={objectID}>Phone number {N} <i className="sub-label">- optional</i></label><br/>
-        <input type="text" id={objectID} name={objectID} onChange={onChange} maxLength="20" value={formData.PhoneNumbers[i]} ></input>
+        <input type="text" id={objectID} name={objectID} onChange={onChange} maxLength="20" value={formData.PhoneNumbers[i] || ""} ></input>
       </div>
   )
 }
@@ -80,10 +81,11 @@ class ContactUs extends React.Component {
     let phoneNumbers = this.state.formData.PhoneNumbers
     console.log(phoneNumbers)
     const value = event.target.value.replace(" ", "")
-    if( value.match(/[^0-9]/g) === null){
+    if( value.match(/[^0-9]/g) === null && value.length !== 0){
       phoneNumbers[N] = value
       this.setForm(targetName, phoneNumbers)
     }
+    this.forceUpdate()
   }
 
   handleOnSubmit = (event) => {
