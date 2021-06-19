@@ -7,6 +7,7 @@ import '../StaticText.css'
 import './CustomCheckbox.css'
 import SubmitIcon from '../../Resources/Icon_Submit.svg'
 import ContactUsStatic from '../../Resources/ContactUs.json'
+import sendContactUsForm from './ContactUsFetch.js'
 
 const PhoneNumber = ({ N, onChange, formData }) => {
   const i = N-1
@@ -26,7 +27,7 @@ class ContactUs extends React.Component {
     super()
     this.state = {
       awaitingFormResponse: false,
-      recievedFormResponse: false,
+      showFormSuccess: false,
       numberList: [0],
       showAddress: false,
       formData: {
@@ -92,7 +93,19 @@ class ContactUs extends React.Component {
     console.log("submit button")
     event.preventDefault()
     // todo: add a function that reads all the form fields (incase of autofill)
-    this.sendForm()
+    // const response = sendContactUsForm(this.state.formData)
+    // console.log(response)
+    let response
+    sendContactUsForm(this.state.formData)
+      .then((res) => {
+        this.awaitingFormResponse = false
+        if (res.Status === "0"){
+          this.showFormSuccess = true
+        }
+        else {
+          // fill error messages
+        }
+      })
   }
 
   setForm = (targetName, targetData) => {
@@ -101,20 +114,6 @@ class ContactUs extends React.Component {
     newFormData[targetName] = targetData
     console.log(newFormData)
     this.setState({formData: newFormData})
-  }
-
-  sendForm = async () => {
-    console.log(this.state.formData)
-    await fetch("https://interview-assessment.api.avamae.co.uk/api/v1/contact-us/submit", {
-      method: 'POST',
-      headers: {
-        'accept': 'application/json',
-        'Content-Type': 'application/json-patch+json'
-      },
-      body: JSON.stringify(this.state.formData)
-    })
-    .then((res) => res.json())
-    .then((data) => console.log(data))
   }
   
   render(){

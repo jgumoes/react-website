@@ -1,23 +1,8 @@
 import { shallow, mount } from "enzyme";
 import ContactUs from './ContactUs'
+import FillFormData, { modelFormData } from "./ContactUsSpecHelpers";
+import * as fetchModules from './ContactUsFetch'
 
-const modelFormData = {
-  "FullName": "Testy Testworth",
-  "EmailAddress": "t.testworth@notreal.net",
-  "PhoneNumbers": [
-    "0118 999 881 999 119 7253"
-  ],
-  "Message": "Test post pls ignore",
-  "bIncludeAddressDetails": true,
-  "AddressDetails": {
-    "AddressLine1": "1313 Mockingbird Lane",
-    "AddressLine2": "",
-    "CityTown": "Mockingbird Heights",
-    "StateCounty": "Transylvania",
-    "Postcode": "010101",
-    "Country": "Romania"
-  }
-}
 describe('ContactUs', () => {
   let container
   beforeEach(() => (
@@ -101,7 +86,17 @@ describe('ContactUs', () => {
       expect(container.find("button[type='submit']")).toHaveLength(1)
     });
 
-    it.todo("should send a form through a form-sending function")
+    it("should send a form through a form-sending function", () => {
+      const mockFetch = jest.fn()
+      fetchModules.sendContactUsForm = mockFetch
+      
+      const wrapper = mount(<ContactUs />)
+      FillFormData(wrapper)
+      // console.log(fetchModules.FillFormData.calls);
+      // expect(fetchModules.FillFormData.)
+      expect(mockFetch).toHaveBeenCalledWith(modelFormData)
+      
+    })
     
   });
 });
