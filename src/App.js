@@ -1,5 +1,6 @@
 import Main from './Views/Main/Main';
 import ContactUs from './Views/ContactUs/ContactUs';
+import AboutUs from './Views/AboutUs/AboutUs';
 import './App.css'
 import NavBar from './components/NavBar/NavBar';
 
@@ -19,7 +20,7 @@ function App() {
           <ContactUs />
         </Route>
         <Route path="/about">
-          <div>About Us</div>
+          <AboutUs />
         </Route>
         <Router exact path="/">
           <Main />
