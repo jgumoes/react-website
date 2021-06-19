@@ -13,7 +13,7 @@ h3.static-text {
   margin-bottom: 21px;
 }
 
-p.static-text{
+p.static-text, li.static-text{
   font-size: var(--static-body-font-size);
   text-shadow: 0 0 0.5px var(--dark-text-color);
   line-height: 20px;
