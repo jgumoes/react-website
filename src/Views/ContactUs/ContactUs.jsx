@@ -99,8 +99,9 @@ class ContactUs extends React.Component {
     sendContactUsForm(this.state.formData)
       .then((res) => {
         this.awaitingFormResponse = false
-        if (res.Status === "0"){
-          this.showFormSuccess = true
+        console.log("res", res)
+        if (res.Status === "1"){
+          this.setState({ showFormSuccess: true })
         }
         else {
           // fill error messages
@@ -119,12 +120,19 @@ class ContactUs extends React.Component {
   render(){
     var checkboxState = this.state.formData.bIncludeAddressDetails
     const formData = this.state.formData
-    
+    console.log("showFormSuccess", this.state.showFormSuccess)
+    if (this.state.showFormSuccess) {
+      return(
+        <div className="contact-page-container">
+          good job, buddy!
+        </div>
+      )
+    }
     return(
       <div className="contact-page-container">
-        <form className="contact-us-form" onSubmit={this.handleOnSubmit} autoComplete="off" >
-          <h3 className="static-text">Contact us</h3>
-          <p className="static-text"><b>{ContactUsStatic["sub-header"]}</b></p>
+        <h3 className="static-text">Contact us</h3>
+        <p className="static-text"><b>{ContactUsStatic["sub-header"]}</b></p>
+        <form className="contact-us-form" onSubmit={this.handleOnSubmit} >
           <div className="first-line">
             <div className="form-element">
               <label className="form-element" id="FullName" htmlFor="FullName">Full name</label>.
