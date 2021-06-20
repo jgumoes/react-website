@@ -27,6 +27,7 @@ class ContactUs extends React.Component {
   constructor(){
     super()
     this.state = {
+      errors: {},
       awaitingFormResponse: false,
       showFormSuccess: false,
       numberList: [0],
@@ -96,7 +97,8 @@ class ContactUs extends React.Component {
     // todo: add a function that reads all the form fields (incase of autofill)
     // const response = sendContactUsForm(this.state.formData)
     // console.log(response)
-    let response
+    let newErrors = {}
+    let obj
     sendContactUsForm(this.state.formData)
       .then((res) => {
         this.awaitingFormResponse = false
@@ -105,8 +107,16 @@ class ContactUs extends React.Component {
           this.setState({ showFormSuccess: true })
         }
         else {
-          // fill error messages
+          console.log(res.Errors)
+          for (obj of res.Errors){
+            console.log(obj)
+            let message = obj.MessageCode.replaceAll("_", " ")
+            console.log(message)
+            newErrors[obj.FieldName] = message
+          }
         }
+        this.setState({ errors: newErrors})
+        console.log("state: ", this.state)
       })
   }
 
@@ -121,6 +131,7 @@ class ContactUs extends React.Component {
   render(){
     var checkboxState = this.state.formData.bIncludeAddressDetails
     const formData = this.state.formData
+    const errorsObj = this.state.errors
     console.log("showFormSuccess", this.state.showFormSuccess)
     if (this.state.showFormSuccess) {
       return(
@@ -148,7 +159,7 @@ class ContactUs extends React.Component {
             <div className="first-line">
                 <FormElement text="Full name" element={"FullName"} elementValue={formData.FullName} onChangeHandler={this.onChangeHandler} />
               
-                <FormElement text="Email address" element={"EmailAddress"} elementValue={formData.EmailAddress} onChangeHandler={this.onChangeHandler} />
+                <FormElement text="Email address" element={"EmailAddress"} elementValue={formData.EmailAddress} onChangeHandler={this.onChangeHandler} error={errorsObj.EmailAddress} />
             </div>
 
             {this.state.numberList.map((n, i) => <PhoneNumber N={String(n+1)} key={i} onChange={this.phoneChangeHandler} formData={formData} />)}

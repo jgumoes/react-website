@@ -119,3 +119,20 @@ button[type="submit"].form-element span{
 .message-sent .tick-container img{
   width: 22px;
 }
+
+.error-box, .contact-us-form .form-element input.error-box {
+  padding-inline: 4px;
+  color: red;
+  border: 1px solid red;
+}
+
+.form-element .error-message{
+  background-color: #fee8e8 !important;
+  display: block;
+  padding: 3px 5px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: var(--button-border-radius);
+  font-size: 14px;
+  text-align: center;
+}
