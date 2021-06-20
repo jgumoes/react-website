@@ -136,3 +136,7 @@ button[type="submit"].form-element span{
   font-size: 14px;
   text-align: center;
 }
+
+@media only screen and (max-width: 904px) {
+  
+}

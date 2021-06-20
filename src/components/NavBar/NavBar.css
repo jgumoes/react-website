@@ -42,3 +42,18 @@
 .navbar .buttons-container {
   height: 100%;
 }
+
+@media screen and (max-width: 904px) {
+  .navbar {
+    display: flex;
+    justify-content: center;
+    margin-inline: 0;
+    padding-inline: 0;
+  }
+}
+
+@media screen and (max-width: 645px) {
+  .navbar .buttons-container {
+    display: none;
+  }
+}
