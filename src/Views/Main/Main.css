@@ -104,3 +104,9 @@
   color: var(--dark-text-color);
   text-shadow: 0 0 1.5px var(--dark-text-color);
 }
+
+@media only screen and (max-width: 550px) {
+  .static-card#third .paragraph-container{
+    column-count: unset;
+  }
+}

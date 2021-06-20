@@ -11,7 +11,7 @@ import ArrowIcon from './Icon_Arrow.svg'
   render() {
     const position = this.props.position
     return(
-    <div className="carousel-button" id={position}>
+    <div className="carousel-button" id={position} onClick={this.handleClick}>
       <button className="inner-button" onClick={this.handleClick}>
         {/* <Arrow className="arrow" id={position} viewBox="0 0 20 20"/> */}
         <img className="arrow" src={ArrowIcon} alt="" />

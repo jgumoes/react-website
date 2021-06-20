@@ -12,28 +12,29 @@
 .carousel-container{
   height: 420px;
   background-clip: border-box;
+  background-size: cover;
   display: flex;
   width: 100%;
+  background-repeat: no-repeat;
   /* justify-content: space-between; */
   /* overflow: hidden; */
 }
 
 .carousel-container#swiper_image_1 {
-  background-size: 1600px;
   background-position-x: center;
   background-position-y: 26.5%;
 }
 
 .carousel-container#swiper_image_2 {
-  background-size: 1560px;
   background-position-x: center;
-  background-position-y: -307px;
+  background-position-y: 50%;
+  /* background-position-y: -307px; */
 }
 
 .carousel-container#swiper_image_3 {
-  background-size: 1560px;
   background-position-x: center;
-  background-position-y: -45px;
+  background-position-y: 10%;
+  /* background-position-y: -45px; */
 }
 
 .swiper-element .h{
@@ -50,4 +51,13 @@
   display: flex;
   flex-direction: column;
   margin-top: 129px;
+}
+
+@media screen and (max-width: 630px) {
+
+  .carousel-container .swiper-element{
+    position: absolute;
+    margin-inline: max(var(--responsive-margin-percentage), var(--responsive-margin-px));
+    max-width: fit-content;
+  }
 }

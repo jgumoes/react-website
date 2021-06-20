@@ -10,7 +10,7 @@ const SwiperElement = ({data}) => {
         <div className="content">
           <h1 className="h">{ data["Title"] }</h1>
           <h3 className="h">{data["Subtitle"]}</h3>
-          <BlueButton text="Contact Us" route="/contact"/>
+          <BlueButton className="swiper-link-button" text="Contact Us" route="/contact"/>
         </div>
     </div>
   )

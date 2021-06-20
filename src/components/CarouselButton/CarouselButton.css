@@ -29,3 +29,19 @@
 .inner-button .arrow {
   height: 10px;
 }
+
+@media screen and (max-width: 630px) {
+  .carousel-button{
+    width: 50%;
+  }
+
+  .carousel-button .inner-button{
+    display: none;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .blue-button.swiper-link-button{
+    width: 100%;
+  }
+}
