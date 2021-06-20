@@ -137,6 +137,30 @@ button[type="submit"].form-element span{
   text-align: center;
 }
 
-@media only screen and (max-width: 904px) {
+@media only screen and (max-width: 770px) {
+  .contact-page-container{
+    background-image: unset;
+    width: fit-content;
+    margin-inline: auto;
+    min-height: unset;
+  }
+
+  .contact-page-container .form-container {
+    min-height: unset;
+    padding: 14px 0;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .contact-page-container{
+    margin-inline: max(6%, 10px);
+  }
   
+  .contact-us-form .first-line {
+    display: unset;
+  }
+
+  form .address-container{
+    display: unset;
+  }
 }
