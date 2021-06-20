@@ -155,7 +155,7 @@ class ContactUs extends React.Component {
 
             <LightButton className="form-element" text="Add new phone number" ID="add-phone-number" clickHandler={this.addPhoneNumber} />
 
-            <FormElement text="Message" element="Message" elementValue={formData.Message} onChangeHandler={this.onChangeHandler} subText={<span className="sub-label">Maximum text length is 500 characters</span>} />
+            <FormElement inputType="textarea" text="Message" element="Message" elementValue={formData.Message} onChangeHandler={this.onChangeHandler} subText={<span className="sub-label">Maximum text length is 500 characters</span>} />
 
             <div className="form-element" id="bIncludeAddressDetails">
               <input type="checkbox" id="bIncludeAddressDetails" name="bIncludeAddressDetails" onChange={this.checkboxChangeHandler} checked={checkboxState} />

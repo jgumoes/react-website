@@ -1,5 +1,5 @@
 
-const FormElement = ({ text, element, elementValue, onChangeHandler, error="", required=true, subText, maxLength=500}) => {
+const FormElement = ({ text, element, elementValue, onChangeHandler, error="", required=true, subText, maxLength=500, inputType="text"}) => {
   return(
     <>
       <div className="form-element" id={element} >
@@ -9,7 +9,12 @@ const FormElement = ({ text, element, elementValue, onChangeHandler, error="", r
             <br></br><span className="error-message">{error}</span>
           </>
         }
-        <input type="text" id={element} name={element} onChange={onChangeHandler} value={elementValue}maxLength={maxLength} required={required}></input>
+        {inputType === "text" &&
+          <input type="text" id={element} name={element} onChange={onChangeHandler} value={elementValue}maxLength={maxLength} required={required}></input>
+        }
+        {inputType === "textarea" &&
+          <textarea id={element} name={element} onChange={onChangeHandler} value={elementValue}maxLength={maxLength} required={required}></textarea>
+        }
       </div>
     </>
   )

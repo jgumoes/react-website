@@ -5,19 +5,13 @@
   background-repeat: no-repeat;
   background-position: 540px -49px;
   background-size: 495px;
-  min-height: 913px;
+  /* min-height: 870px; */
 }
 
 .contact-page-container .form-container{
-  min-height: 733px;
+  min-height: 726px;
   padding: var(--static-page-vertical-padding) 0;
   max-width: 485px;
-}
-
-.contact-us-form{
-  /* min-height: 733px;
-  padding: var(--static-page-vertical-padding) 0;
-  max-width: 485px; */
 }
 
 .contact-us-form .first-line{
