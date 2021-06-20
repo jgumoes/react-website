@@ -17,10 +17,13 @@ const PhoneNumber = ({ N, onChange, formData }) => {
     N = N.length === 1 ? "0"+N : N
     const objectID = `PhoneNumber-${N}`
     return(
-      <div className="form-element phone-number">
+      <>
+      {/* <div className="form-element phone-number">
         <label htmlFor={objectID}>Phone number {N} <i className="sub-label">- optional</i></label><br/>
         <input type="text" id={objectID} name={objectID} onChange={onChange} maxLength="20" value={formData.PhoneNumbers[i] || ""} ></input>
-      </div>
+      </div> */}
+      <FormElement text={`Phone number ${N}`} element={objectID} elementValue={formData.PhoneNumbers[i] || ""} onChangeHandler={onChange} required={false} />
+      </>
   )
 }
 
