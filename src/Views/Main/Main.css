@@ -1,6 +1,3 @@
-:root {
-  /* --element-width: 486px */
-}
 
 .static-card {
   box-sizing: border-box;
@@ -60,16 +57,19 @@
 }
 /* second card*/
 .static-card#second {
-  height: 406px;
+  max-height: 406px;
   background-image: url("../../Resources/shutterstock_1302552622.jpg");
   background-position-x: center;
   background-position-y: -49px;
   background-size: 1530px;
+  max-height: fit-content;
 }
 
 .static-card#second .card-element {
   padding: 25px 27px;
   background-color: #635d58;
+  max-height: 340px;
+  min-width: 340px;
 }
 
 #second .card-element h2,#second .card-element p {
@@ -108,5 +108,26 @@
 @media only screen and (max-width: 550px) {
   .static-card#third .paragraph-container{
     column-count: unset;
+  }
+}
+
+@media screen and (max-width: 1120px) {
+  .static-card#first, .static-card#third{
+    max-width: 755px;
+    box-sizing: unset;
+    padding-inline: 0;
+    margin-inline: auto;
+  }
+}
+
+@media screen and (max-width: 850) {
+  .static-card#first .card-element{
+    flex-direction: column-reverse;
+    max-width: unset;
+  }
+
+  .static-card {
+    margin-inline: max(var(--responsive-margin-percentage), var(--responsive-margin-px));
+    
   }
 }
