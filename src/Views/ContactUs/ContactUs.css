@@ -90,20 +90,34 @@ button[type="submit"].form-element span{
   flex-direction: column;
   align-items: center;
   background-color: #e9f4da;
-  height: 200px;
+  height: 95px;
   max-width: 100%;
+  padding: 28px 0;
+  border-radius: var(--button-border-radius);
+  margin: 25px 0 0;
+}
+
+.message-sent h4{
+  margin: 14px 0 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark-text-color);
+}
+
+.message-sent p{
+  margin: 2px;
 }
 
 .message-sent .tick-container {
   background-color: #8ec73d;
   border-radius: 50%;
-  height: 100px;
-  width: 100px;
+  height: 38px;
+  width: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .message-sent .tick-container img{
-  width: 50px;
+  width: 22px;
 }

@@ -28,7 +28,7 @@ class ContactUs extends React.Component {
     super()
     this.state = {
       awaitingFormResponse: false,
-      showFormSuccess: true,
+      showFormSuccess: false,
       numberList: [0],
       showAddress: false,
       formData: {
@@ -133,7 +133,7 @@ class ContactUs extends React.Component {
                   <img src={ValidIcon} alt="" />
                 </div>
                 <h4>Your message has been sent</h4>
-                <span>We will be in contact with you within 24 hours</span>
+                <p className="static-text">We will be in contact with you within 24 hours</p>
             </div>
           </div>
         </div>
