@@ -8,10 +8,16 @@
   min-height: 913px;
 }
 
-.contact-us-form{
+.contact-page-container .form-container{
   min-height: 733px;
   padding: var(--static-page-vertical-padding) 0;
   max-width: 485px;
+}
+
+.contact-us-form{
+  /* min-height: 733px;
+  padding: var(--static-page-vertical-padding) 0;
+  max-width: 485px; */
 }
 
 .contact-us-form .first-line{
@@ -77,4 +83,27 @@ button[type="submit"].form-element span{
   position: relative;
   right: 16.25px;
   font-weight: bold;
+}
+
+.message-sent{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e9f4da;
+  height: 200px;
+  max-width: 100%;
+}
+
+.message-sent .tick-container {
+  background-color: #8ec73d;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.message-sent .tick-container img{
+  width: 50px;
 }

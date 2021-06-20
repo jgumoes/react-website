@@ -8,6 +8,7 @@ import './CustomCheckbox.css'
 import SubmitIcon from '../../Resources/Icon_Submit.svg'
 import ContactUsStatic from '../../Resources/ContactUs.json'
 import sendContactUsForm from './ContactUsFetch.js'
+import ValidIcon from '../../Resources/Icon_Valid.svg'
 
 const PhoneNumber = ({ N, onChange, formData }) => {
   const i = N-1
@@ -27,7 +28,7 @@ class ContactUs extends React.Component {
     super()
     this.state = {
       awaitingFormResponse: false,
-      showFormSuccess: false,
+      showFormSuccess: true,
       numberList: [0],
       showAddress: false,
       formData: {
@@ -124,50 +125,62 @@ class ContactUs extends React.Component {
     if (this.state.showFormSuccess) {
       return(
         <div className="contact-page-container">
-          good job, buddy!
+          <div className="form-container">
+            <h3 className="static-text">Contact us</h3>
+            <p className="static-text"><b>{ContactUsStatic["sub-header"]}</b></p>
+              <div className="message-sent">
+                <div className="tick-container">
+                  <img src={ValidIcon} alt="" />
+                </div>
+                <h4>Your message has been sent</h4>
+                <span>We will be in contact with you within 24 hours</span>
+            </div>
+          </div>
         </div>
       )
     }
     return(
       <div className="contact-page-container">
-        <h3 className="static-text">Contact us</h3>
-        <p className="static-text"><b>{ContactUsStatic["sub-header"]}</b></p>
-        <form className="contact-us-form" onSubmit={this.handleOnSubmit} >
-          <div className="first-line">
-            <div className="form-element">
-              <label className="form-element" id="FullName" htmlFor="FullName">Full name</label>.
-              <input type="text" id="FullName" name="FullName" onChange={this.onChangeHandler} value={formData.FullName} required></input>
+        <div className="form-container">
+          <h3 className="static-text">Contact us</h3>
+          <p className="static-text"><b>{ContactUsStatic["sub-header"]}</b></p>
+          <form className="contact-us-form" onSubmit={this.handleOnSubmit} >
+            <div className="first-line">
+              <div className="form-element">
+                <label className="form-element" id="FullName" htmlFor="FullName">Full name</label>.
+                <input type="text" id="FullName" name="FullName" onChange={this.onChangeHandler} value={formData.FullName} required></input>
+              </div>
+              
+              <div className="form-element">
+                <label className="form-element" id="EmailAddress" htmlFor="EmailAddress" >Email address</label>
+                <input type="text" id="EmailAddress" name="EmailAddress" onChange={this.onChangeHandler} value={formData.EmailAddress} required></input>
+              </div>
             </div>
-            
-            <div className="form-element">
-              <label className="form-element" id="EmailAddress" htmlFor="EmailAddress" >Email address</label>
-              <input type="text" id="EmailAddress" name="EmailAddress" onChange={this.onChangeHandler} value={formData.EmailAddress} required></input>
+
+            {this.state.numberList.map((n, i) => <PhoneNumber N={String(n+1)} key={i} onChange={this.phoneChangeHandler} formData={formData} />)}
+
+            <LightButton className="form-element" text="Add new phone number" ID="add-phone-number" clickHandler={this.addPhoneNumber} />
+
+            <div className="form-element" id="Message">
+              <label htmlFor="Message">Message <span className="sub-label">Maximum text length is 500 characters</span></label><br/>
+              <textarea type="textArea" id="Message" name="Message" maxLength="500" onChange={this.onChangeHandler} required></textarea>
             </div>
+
+            <div className="form-element" id="bIncludeAddressDetails">
+              <input type="checkbox" id="bIncludeAddressDetails" name="bIncludeAddressDetails" onChange={this.checkboxChangeHandler} checked={checkboxState} />
+              <div type="button" className="custom-checkbox" onClick={this.checkboxChangeHandler}><div className="custom-checkmark"></div></div>
+              <label htmlFor="bIncludeAddressDetails" onClick={this.checkboxChangeHandler}>Add address details</label>
+            </div>
+            {checkboxState === true &&
+              <AddressFormContainer changeHandler={this.addressChangeHandler} formData={formData} />
+            }
+            <button type="submit" className="form-element blue-button" >
+              <img src={SubmitIcon} alt="" />
+              <span>Submit</span>
+            </button>
+          </form>
+          {/* <img src={ImgContact} alt="" /> */}
           </div>
-
-          {this.state.numberList.map((n, i) => <PhoneNumber N={String(n+1)} key={i} onChange={this.phoneChangeHandler} formData={formData} />)}
-
-          <LightButton className="form-element" text="Add new phone number" ID="add-phone-number" clickHandler={this.addPhoneNumber} />
-
-          <div className="form-element" id="Message">
-            <label htmlFor="Message">Message <span className="sub-label">Maximum text length is 500 characters</span></label><br/>
-            <textarea type="textArea" id="Message" name="Message" maxLength="500" onChange={this.onChangeHandler} required></textarea>
-          </div>
-
-          <div className="form-element" id="bIncludeAddressDetails">
-            <input type="checkbox" id="bIncludeAddressDetails" name="bIncludeAddressDetails" onChange={this.checkboxChangeHandler} checked={checkboxState} />
-            <div type="button" className="custom-checkbox" onClick={this.checkboxChangeHandler}><div className="custom-checkmark"></div></div>
-            <label htmlFor="bIncludeAddressDetails" onClick={this.checkboxChangeHandler}>Add address details</label>
-          </div>
-          {checkboxState === true &&
-            <AddressFormContainer changeHandler={this.addressChangeHandler} formData={formData} />
-          }
-          <button type="submit" className="form-element blue-button" >
-            <img src={SubmitIcon} alt="" />
-            <span>Submit</span>
-          </button>
-        </form>
-        {/* <img src={ImgContact} alt="" /> */}
       </div>
     )
   }
