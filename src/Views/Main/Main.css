@@ -67,7 +67,7 @@
 
 .static-card#second .card-element {
   padding: 25px 27px;
-  background-color: #635d58;
+  background-color: #3e352db3;
   max-height: 340px;
   min-width: 340px;
 }
@@ -97,6 +97,10 @@
   margin-top: 0%;
 }
 
+.static-card#third h2 {
+  text-align: center;
+}
+
 .static-card#third h3 {
   font-size: 15px;
   margin: 7px 0;
@@ -107,7 +111,8 @@
 
 @media only screen and (max-width: 550px) {
   .static-card#third .paragraph-container{
-    column-count: unset;
+    column-count: unset !important;
+    display: unset;
   }
 }
 
@@ -120,14 +125,55 @@
   }
 }
 
-@media screen and (max-width: 850) {
-  .static-card#first .card-element{
+@media screen and (max-width: 850px) {
+  .static-card#first{
     flex-direction: column-reverse;
     max-width: unset;
   }
 
+  .static-card#second{
+    background-position-x: 65%;
+  }
+
+  .static-card#first .card-element{
+    max-width: unset;
+    /* margin-inline: max(var(--responsive-margin-percentage), var(--responsive-margin-px)); */
+  }
+
+  .static-card#third .paragraph-container{
+    column-count: 2;
+  }
+
   .static-card {
-    margin-inline: max(var(--responsive-margin-percentage), var(--responsive-margin-px));
+    padding-inline: max(var(--responsive-margin-percentage), var(--responsive-margin-px)) !important;
     
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .static-card#second{
+    background-position-y: 50%;
+    background-size: cover;
+    background-position-x: center;
+  }
+}
+
+@media screen and (max-width: 440px) {
+  .main-page.blue-button {
+    width: 100%;
+  }
+
+  .static-card#second {
+    padding-inline: 0;
+    align-items: center;
+    padding-inline: max(var(--responsive-margin-percentage), var(--responsive-margin-px)) !important;
+  }
+
+  .static-card#third{
+    display: block;
+  }
+  
+  .static-card#second .card-element, .static-card#second .card-element .light-button{
+    min-width: 100%;
   }
 }

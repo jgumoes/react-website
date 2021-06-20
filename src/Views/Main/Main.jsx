@@ -26,7 +26,7 @@ const FirstCard = ({ props }) => {
         <ul>
           {listItems.map((li, i) => <li key={i}>{li}</li>)}
         </ul>
-        <BlueButton text="Learn more" route="/about"/>
+        <BlueButton className="main-page" text="Learn more" route="/about-us"/>
       </div>
       <div className="card-element" id="picture">
       <img src={firstCardPicture} alt="tres Ipsum" />
@@ -58,7 +58,7 @@ const ThirdCard = ({ props }) => {
         <p><b>{leadParagraph}</b></p>
         {body.map((b, i) => <p key={i}>{b}</p>)}
       </div>
-      <BlueButton text="Contact us" route="/contact"/>
+      <BlueButton className="main-page" text="Contact us" route="/contact-us"/>
     </div>
   )
 }
