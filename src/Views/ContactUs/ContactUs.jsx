@@ -9,6 +9,7 @@ import SubmitIcon from '../../Resources/Icon_Submit.svg'
 import ContactUsStatic from '../../Resources/ContactUs.json'
 import sendContactUsForm from './ContactUsFetch.js'
 import ValidIcon from '../../Resources/Icon_Valid.svg'
+import FormElement from '../../components/FormElement/FormElement'
 
 const PhoneNumber = ({ N, onChange, formData }) => {
   const i = N-1
@@ -146,25 +147,20 @@ class ContactUs extends React.Component {
           <p className="static-text"><b>{ContactUsStatic["sub-header"]}</b></p>
           <form className="contact-us-form" onSubmit={this.handleOnSubmit} >
             <div className="first-line">
-              <div className="form-element">
-                <label className="form-element" id="FullName" htmlFor="FullName">Full name</label>.
-                <input type="text" id="FullName" name="FullName" onChange={this.onChangeHandler} value={formData.FullName} required></input>
-              </div>
+                <FormElement text="Full name" element={"FullName"} elementValue={formData.FullName} onChangeHandler={this.onChangeHandler} />
               
-              <div className="form-element">
-                <label className="form-element" id="EmailAddress" htmlFor="EmailAddress" >Email address</label>
-                <input type="text" id="EmailAddress" name="EmailAddress" onChange={this.onChangeHandler} value={formData.EmailAddress} required></input>
-              </div>
+                <FormElement text="Email address" element={"EmailAddress"} elementValue={formData.EmailAddress} onChangeHandler={this.onChangeHandler} />
             </div>
 
             {this.state.numberList.map((n, i) => <PhoneNumber N={String(n+1)} key={i} onChange={this.phoneChangeHandler} formData={formData} />)}
 
             <LightButton className="form-element" text="Add new phone number" ID="add-phone-number" clickHandler={this.addPhoneNumber} />
 
-            <div className="form-element" id="Message">
+            {/* <div className="form-element" id="Message">
               <label htmlFor="Message">Message <span className="sub-label">Maximum text length is 500 characters</span></label><br/>
               <textarea type="textArea" id="Message" name="Message" maxLength="500" onChange={this.onChangeHandler} required></textarea>
-            </div>
+            </div> */}
+            <FormElement text="Message" element="Message" elementValue={formData.Message} onChangeHandler={this.onChangeHandler} subText={<span className="sub-label">Maximum text length is 500 characters</span>} />
 
             <div className="form-element" id="bIncludeAddressDetails">
               <input type="checkbox" id="bIncludeAddressDetails" name="bIncludeAddressDetails" onChange={this.checkboxChangeHandler} checked={checkboxState} />
@@ -179,7 +175,6 @@ class ContactUs extends React.Component {
               <span>Submit</span>
             </button>
           </form>
-          {/* <img src={ImgContact} alt="" /> */}
           </div>
       </div>
     )
