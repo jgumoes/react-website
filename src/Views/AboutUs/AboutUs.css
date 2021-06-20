@@ -1,6 +1,6 @@
 .about-us-container{
   max-width: 100%;
-  padding: var(--static-page-vertical-padding) var(--page-margin) ;
+  padding: var(--static-page-vertical-padding) var(--page-margin);
 }
 
 .about-us-container .image-container{
