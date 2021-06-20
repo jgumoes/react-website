@@ -1,7 +1,6 @@
 .about-us-container{
   max-width: 100%;
   padding: var(--static-page-vertical-padding) var(--page-margin) ;
-  /* margin-inline: var(--page-margin); */
 }
 
 .about-us-container .image-container{
@@ -14,7 +13,7 @@
 }
 
 .about-us-container .image-container img{
-  width: 584px;
+  width: 102.3%;
   position: relative;
   right: 5px;
 }
@@ -35,4 +34,18 @@
 .about-us-container li {
   font-weight: 500;
   margin-top: 3px;
+}
+
+@media only screen and (max-width: 770px) {
+  .about-us-container{
+    margin-inline: auto;
+    padding: 14px 0;
+    max-width: 485px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .about-us-container{
+    margin-inline: max(var(--responsive-margin-percentage), var(--responsive-margin-px));
+  }
 }

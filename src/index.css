@@ -5,7 +5,9 @@
   --button-border-radius: 3px;
   --white-text-color: #f8f8f8;
   --dark-text-color: #606060;
-  --small-desktop-width: 904px
+  --responsive-page-padding: 14px;
+  --responsive-margin-percentage: 6%;
+  --responsive-margin-px: 10px;
 }
 
 body {

@@ -153,7 +153,7 @@ button[type="submit"].form-element span{
 
 @media only screen and (max-width: 550px) {
   .contact-page-container{
-    margin-inline: max(6%, 10px);
+    margin-inline: max(var(--responsive-margin-percentage), var(--responsive-margin-px));
   }
   
   .contact-us-form .first-line {
