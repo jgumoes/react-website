@@ -18,11 +18,7 @@ const PhoneNumber = ({ N, onChange, formData }) => {
     const objectID = `PhoneNumber-${N}`
     return(
       <>
-      {/* <div className="form-element phone-number">
-        <label htmlFor={objectID}>Phone number {N} <i className="sub-label">- optional</i></label><br/>
-        <input type="text" id={objectID} name={objectID} onChange={onChange} maxLength="20" value={formData.PhoneNumbers[i] || ""} ></input>
-      </div> */}
-      <FormElement text={`Phone number ${N}`} element={objectID} elementValue={formData.PhoneNumbers[i] || ""} onChangeHandler={onChange} required={false} />
+        <FormElement text={`Phone number ${N}`} element={objectID} elementValue={formData.PhoneNumbers[i] || ""} onChangeHandler={onChange} required={false} />
       </>
   )
 }
@@ -159,10 +155,6 @@ class ContactUs extends React.Component {
 
             <LightButton className="form-element" text="Add new phone number" ID="add-phone-number" clickHandler={this.addPhoneNumber} />
 
-            {/* <div className="form-element" id="Message">
-              <label htmlFor="Message">Message <span className="sub-label">Maximum text length is 500 characters</span></label><br/>
-              <textarea type="textArea" id="Message" name="Message" maxLength="500" onChange={this.onChangeHandler} required></textarea>
-            </div> */}
             <FormElement text="Message" element="Message" elementValue={formData.Message} onChangeHandler={this.onChangeHandler} subText={<span className="sub-label">Maximum text length is 500 characters</span>} />
 
             <div className="form-element" id="bIncludeAddressDetails">
